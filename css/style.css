@@ -1329,14 +1329,71 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
 .step--media :is(.step-icon, h3, p) { position: relative; transition: color 0.4s var(--ease), transform 0.5s var(--ease); }
 .step--media .step-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; margin: -8px 0 8px -8px; border-radius: 50%; transition: background 0.4s var(--ease), color 0.4s var(--ease); }
 
-.step.step--media.is-visible:is(:hover, :focus-visible, .is-touched), .step--media:is(:hover, :focus-visible, .is-touched) { color: #fff; transform: translateX(6px); border-color: rgba(var(--primary-rgb), 0.6); }
-.step--media:is(:hover, :focus-visible, .is-touched) .step-media { clip-path: inset(0 0 0 0 round var(--radius)); }
-.step--media:is(:hover, :focus-visible, .is-touched) .step-media img { transform: scale(1); }
-.step--media:is(:hover, :focus-visible, .is-touched) :is(h3, p) { color: #fff; }
-.step--media:is(:hover, :focus-visible, .is-touched) p { color: rgba(255, 255, 255, 0.82); }
-.step--media:is(:hover, :focus-visible, .is-touched) h3 { transform: translateX(4px); }
-.step--media:is(:hover, :focus-visible, .is-touched) .step-icon { background: var(--primary); color: #fff; }
-:root:not([data-theme="light"]) .step--media:is(:hover, :focus-visible, .is-touched) .step-icon { color: var(--dark); }
+.step.step--media.is-visible:is(:hover, :focus-visible, .is-touched), .step--media:is(:focus-visible, .is-touched) { color: #fff; transform: translateX(6px); border-color: rgba(var(--primary-rgb), 0.6); }
+.step--media:is(:focus-visible, .is-touched) .step-media { clip-path: inset(0 0 0 0 round var(--radius)); }
+.step--media:is(:focus-visible, .is-touched) .step-media img { transform: scale(1); }
+.step--media:is(:focus-visible, .is-touched) :is(h3, p) { color: #fff; }
+.step--media:is(:focus-visible, .is-touched) p { color: rgba(255, 255, 255, 0.82); }
+.step--media:is(:focus-visible, .is-touched) h3 { transform: translateX(4px); }
+.step--media:is(:focus-visible, .is-touched) .step-icon { background: var(--primary); color: #fff; }
+:root:not([data-theme="light"]) .step--media:is(:focus-visible, .is-touched) .step-icon { color: var(--dark); }
+/* With a mouse the photo follows the cursor instead (see .cursor-preview); the card only highlights */
+.step.step--media.is-visible:hover { transform: translateX(6px); border-color: rgba(var(--primary-rgb), 0.6); }
+.step--media:hover .step-icon { background: rgba(var(--primary-rgb), 0.14); }
+
+/* Floating photo that trails the cursor over the rental steps */
+.cursor-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: clamp(220px, 22vw, 320px);
+  aspect-ratio: 4 / 3;
+  pointer-events: none;
+  will-change: transform;
+}
+.cursor-preview-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #1a1510;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(var(--primary-rgb), 0.12);
+  opacity: 0;
+  clip-path: inset(100% 0 0 0 round 16px);
+  transform: scale(0.7) rotate(var(--tilt, 0deg));
+  transition: opacity 0.35s var(--ease), clip-path 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.cursor-preview.is-active .cursor-preview-inner {
+  opacity: 1;
+  clip-path: inset(0 0 0 0 round 16px);
+  transform: scale(1) rotate(var(--tilt, 0deg));
+}
+.cursor-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.25);
+  transition: transform 0.9s var(--ease);
+}
+.cursor-preview.is-active img { transform: scale(1); }
+.cursor-preview.is-swapping img { animation: previewSwap 0.6s var(--ease); }
+@keyframes previewSwap { from { opacity: 0.2; transform: scale(1.15); } }
+.cursor-preview-label {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--dark);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+}
+:root[data-theme="light"] .cursor-preview-label { color: #fff; }
+:root[data-theme="light"] .cursor-preview-inner { border-color: rgba(255, 255, 255, 0.9); box-shadow: 0 24px 50px rgba(150, 82, 28, 0.28); }
 .step--media:focus-visible { box-shadow: 0 0 0 2px var(--primary); }
 
 /* =========================================================
@@ -2654,7 +2711,7 @@ html.theme-changing *::after {
   .model-title { transform: translateY(-50%); }
   .post-media, .work-media, .team-photo { clip-path: none; }
   .page-transition { display: none; }
-  .step--media:is(:hover, :focus-visible, .is-touched) { transform: none; }
+  .step--media:is(:focus-visible, .is-touched) { transform: none; }
   .theme-switch { animation: none; }
   .map-routes path { stroke-dashoffset: 0; }
   .map-pin, .trip-card { opacity: 1; transform: none; }

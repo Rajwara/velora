@@ -721,6 +721,70 @@
     });
   }
 
+  // ---------- Rental steps: photo follows the cursor ----------
+  const mediaSteps = Array.from(document.querySelectorAll(".step--media"));
+  if (mediaSteps.length && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const preview = document.createElement("div");
+    preview.className = "cursor-preview";
+    preview.setAttribute("aria-hidden", "true");
+    preview.innerHTML = '<div class="cursor-preview-inner"><img alt=""><span class="cursor-preview-label"></span></div>';
+    document.body.appendChild(preview);
+    const previewImg = preview.querySelector("img");
+    const previewLabel = preview.querySelector(".cursor-preview-label");
+    const inner = preview.querySelector(".cursor-preview-inner");
+
+    // Smoothly trail the pointer and tilt with horizontal speed
+    const target = { x: innerWidth / 2, y: innerHeight / 2 };
+    const pos = { ...target };
+    let tilt = 0;
+    let raf = 0;
+    let active = false;
+
+    const place = () => {
+      const w = preview.offsetWidth;
+      const h = preview.offsetHeight;
+      const ease = reduceMotion ? 1 : 0.14;
+      const dx = target.x - pos.x;
+      pos.x += dx * ease;
+      pos.y += (target.y - pos.y) * ease;
+      tilt += ((reduceMotion ? 0 : Math.max(-12, Math.min(12, dx * 0.06))) - tilt) * 0.12;
+      // Sit up and to the left of the cursor, kept inside the window
+      const x = Math.min(Math.max(pos.x - w - 28, 12), innerWidth - w - 12);
+      const y = Math.min(Math.max(pos.y - h / 2, 12), innerHeight - h - 12);
+      preview.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      inner.style.setProperty("--tilt", `${tilt.toFixed(2)}deg`);
+      if (active || Math.abs(dx) > 0.5) raf = requestAnimationFrame(place);
+      else raf = 0;
+    };
+    const start = () => { if (!raf) raf = requestAnimationFrame(place); };
+
+    mediaSteps.forEach((step) => {
+      const src = step.querySelector(".step-media img").getAttribute("src");
+      const title = step.querySelector("h3").textContent;
+      step.addEventListener("pointerenter", (e) => {
+        if (!active) { pos.x = target.x = e.clientX; pos.y = target.y = e.clientY; }
+        if (previewImg.getAttribute("src") !== src) {
+          previewImg.src = src;
+          preview.classList.remove("is-swapping");
+          void preview.offsetWidth;
+          if (active) preview.classList.add("is-swapping");
+        }
+        previewLabel.textContent = title;
+        active = true;
+        preview.classList.add("is-active");
+        start();
+      });
+      step.addEventListener("pointermove", (e) => { target.x = e.clientX; target.y = e.clientY; start(); });
+      step.addEventListener("pointerleave", (e) => {
+        // Stay open when moving straight onto the next step card
+        const next = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(".step--media");
+        if (next) return;
+        active = false;
+        preview.classList.remove("is-active");
+      });
+    });
+  }
+
   // ---------- Rental steps: tap to reveal the photo on touch screens ----------
   document.querySelectorAll(".step--media").forEach((step) => {
     step.addEventListener("click", () => {
