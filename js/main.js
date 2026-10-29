@@ -78,7 +78,7 @@
   document.querySelectorAll(".section-title, .about-lead").forEach(splitWords);
 
   // ---------- Stagger siblings in grids ----------
-  document.querySelectorAll(".stats, .why-grid, .timeline, .posts, .footer-right, .footer-menus").forEach((group) => {
+  document.querySelectorAll(".stats, .why-grid, .timeline, .posts, .footer-right, .footer-menus, .works-row").forEach((group) => {
     group.querySelectorAll(":scope > .reveal, :scope > .reveal-once").forEach((el, i) => {
       el.style.setProperty("--d", `${i * 0.12}s`);
     });
@@ -136,6 +136,16 @@
     }
 
     tabs.forEach((tab, i) => tab.addEventListener("click", () => showTab(i)));
+
+    // Links like index.html#service-pane-3 (from the Services page) open that tab
+    const openFromHash = () => {
+      const i = panes.findIndex((pane) => `#${pane.id}` === location.hash);
+      if (i < 0) return;
+      showTab(i);
+      document.getElementById("services").scrollIntoView();
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
     tabList.addEventListener("keydown", (e) => {
       const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
       if (e.key in keys) {
