@@ -90,6 +90,57 @@
     col.appendChild(track);
   });
 
+  // ---------- Services tabs ----------
+  const tabList = document.querySelector(".tabs-menu");
+  if (tabList) {
+    const tabs = Array.from(tabList.querySelectorAll(".tab"));
+    const panes = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+    const OUT = reduceMotion ? 0 : 150;
+    let current = tabs.findIndex((tab) => tab.classList.contains("is-active"));
+    let timer;
+
+    panes.forEach((pane) => {
+      pane.querySelectorAll(".features li").forEach((li, i) => li.style.setProperty("--i", i));
+    });
+
+    function showTab(i, focus) {
+      if (i === current) return;
+      const prev = panes[current];
+      const next = panes[i];
+
+      tabs.forEach((tab, k) => {
+        const active = k === i;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      if (focus) tabs[i].focus();
+      tabs[i].scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+
+      clearTimeout(timer);
+      panes.forEach((pane) => { if (pane !== prev) { pane.hidden = true; pane.classList.remove("is-visible"); } });
+      prev.classList.remove("is-visible");
+      timer = setTimeout(() => {
+        prev.hidden = true;
+        next.hidden = false;
+        requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add("is-visible")));
+      }, OUT);
+      current = i;
+    }
+
+    tabs.forEach((tab, i) => tab.addEventListener("click", () => showTab(i)));
+    tabList.addEventListener("keydown", (e) => {
+      const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+      if (e.key in keys) {
+        e.preventDefault();
+        showTab((current + keys[e.key] + tabs.length) % tabs.length, true);
+      } else if (e.key === "Home" || e.key === "End") {
+        e.preventDefault();
+        showTab(e.key === "Home" ? 0 : tabs.length - 1, true);
+      }
+    });
+  }
+
   // ---------- Reveal on scroll ----------
   const revealEls = document.querySelectorAll(".reveal, .reveal-once, .split");
   if ("IntersectionObserver" in window && !reduceMotion) {
