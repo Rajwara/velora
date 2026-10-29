@@ -302,8 +302,9 @@
       if (heroMedia && y < vh * 1.2) heroMedia.style.transform = `translateY(${y * 0.3}px)`;
 
       // Stacked cards shrink and dim as the next one slides over
-      cards.forEach((card, i) => {
-        const next = cards[i + 1];
+      const shown = cards.filter((card) => !card.hidden);
+      shown.forEach((card, i) => {
+        const next = shown[i + 1];
         if (!next) return;
         const covered = Math.min(Math.max(1 - (next.getBoundingClientRect().top - card.getBoundingClientRect().top) / card.offsetHeight, 0), 1);
         card.style.transform = `scale(${1 - covered * 0.06})`;
@@ -337,6 +338,188 @@
     if (img.complete && img.naturalWidth === 0) hide();
     img.addEventListener("error", hide);
     img.addEventListener("load", () => { img.style.visibility = ""; });
+  });
+
+  // ---------- Page transitions ----------
+  // Fade to the brand colour before leaving for another page of the site.
+  if (!reduceMotion) {
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[href]");
+      if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (link.target === "_blank" || link.hasAttribute("download")) return;
+      const url = new URL(link.href, location.href);
+      if (url.origin !== location.origin || !/\.html$/.test(url.pathname)) return;
+      if (url.pathname === location.pathname && url.hash) return; // same-page anchor
+      e.preventDefault();
+      body.classList.add("is-leaving");
+      setTimeout(() => { location.href = url.href; }, 380);
+    });
+    // Coming back via the browser's back button restores the page from cache
+    window.addEventListener("pageshow", (e) => { if (e.persisted) body.classList.remove("is-leaving"); });
+  }
+
+  // ---------- Magnetic buttons ----------
+  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll("[data-magnetic]").forEach((el) => {
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        el.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+      });
+      el.addEventListener("pointerleave", () => {
+        el.style.transition = "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
+        el.style.transform = "";
+        setTimeout(() => { el.style.transition = ""; }, 500);
+      });
+    });
+  }
+
+  // ---------- Chip filters (shared by fleet and blog) ----------
+  function setupChips(container, onChange) {
+    const chips = Array.from(container.querySelectorAll(".chip"));
+    const select = (value) => {
+      chips.forEach((chip) => {
+        const on = chip.dataset.filter === value;
+        chip.classList.toggle("is-active", on);
+        chip.setAttribute("aria-pressed", String(on));
+      });
+      onChange(value);
+    };
+    chips.forEach((chip) => chip.addEventListener("click", () => select(chip.dataset.filter)));
+    return select;
+  }
+
+  // ---------- Fleet filter + search ----------
+  const fleetStack = document.getElementById("fleetStack");
+  if (fleetStack) {
+    const fleetCards = Array.from(fleetStack.querySelectorAll(".model-card"));
+    const search = document.getElementById("fleetSearch");
+    const empty = document.getElementById("fleetEmpty");
+    const params = new URLSearchParams(location.search);
+    let marque = "all";
+
+    const apply = () => {
+      const q = search.value.trim().toLowerCase();
+      let count = 0;
+      fleetCards.forEach((card) => {
+        const match = (marque === "all" || card.dataset.marque === marque)
+          && (!q || card.dataset.search.toLowerCase().includes(q));
+        const wasHidden = card.hidden;
+        card.hidden = !match;
+        if (match) {
+          count++;
+          card.classList.add("is-visible");
+          if (wasHidden) {
+            card.classList.remove("is-filtered-in");
+            void card.offsetWidth; // restart the animation
+            card.classList.add("is-filtered-in");
+          }
+        }
+      });
+      empty.hidden = count > 0;
+      onScroll();
+    };
+
+    const selectMarque = setupChips(document.querySelector(".page-fleet .chips"), (value) => { marque = value; apply(); });
+    search.addEventListener("input", apply);
+
+    if (params.get("q")) search.value = params.get("q");
+    selectMarque(params.get("marque") || "all");
+  }
+
+  // ---------- Blog topic filter ----------
+  const blogChips = document.getElementById("blogChips");
+  if (blogChips) {
+    const blogPosts = Array.from(document.querySelectorAll("#blogPosts .post"));
+    setupChips(blogChips, (tag) => {
+      blogPosts.forEach((post) => {
+        const show = tag === "all" || post.dataset.tag === tag;
+        post.classList.toggle("is-hidden", !show);
+        if (show) post.classList.add("is-visible");
+      });
+    });
+  }
+
+  // ---------- Contact form ----------
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    const params = new URLSearchParams(location.search);
+    const topicFields = Array.from(contactForm.querySelectorAll("[data-topic]"));
+    const setTopic = (topic) => {
+      topicFields.forEach((el) => { el.hidden = el.dataset.topic !== topic; });
+    };
+    contactForm.querySelectorAll('input[name="topic"]').forEach((radio) => {
+      radio.addEventListener("change", () => setTopic(radio.value));
+    });
+
+    // Prefill from links such as contact.html?car=bmw-m5 or ?service=tyres
+    let topic = params.get("topic");
+    if (params.get("car")) { topic = "rental"; contactForm.car.value = params.get("car"); }
+    if (params.get("service")) { topic = "service"; contactForm.service.value = params.get("service"); }
+    if (topic && contactForm.querySelector(`input[name="topic"][value="${topic}"]`)) {
+      contactForm.querySelector(`input[name="topic"][value="${topic}"]`).checked = true;
+      setTopic(topic);
+    }
+
+    const error = document.getElementById("formError");
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const required = Array.from(contactForm.querySelectorAll("[required]"));
+      let firstInvalid = null;
+      required.forEach((field) => {
+        const ok = field.checkValidity();
+        const target = field.type === "checkbox" ? field.closest(".consent") : field;
+        target.classList.toggle("is-invalid", !ok);
+        if (!ok && !firstInvalid) firstInvalid = field;
+      });
+      error.hidden = !firstInvalid;
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      // Demo only: connect this to your booking system or a form service.
+      Array.from(contactForm.children).forEach((child) => {
+        if (child.id !== "formSuccess") child.hidden = true;
+      });
+      document.getElementById("formSuccess").hidden = false;
+    });
+    contactForm.addEventListener("input", (e) => {
+      const field = e.target;
+      if (field.checkValidity && field.checkValidity()) {
+        (field.type === "checkbox" ? field.closest(".consent") : field).classList.remove("is-invalid");
+      }
+    });
+  }
+
+  // ---------- Map, loaded only after consent ----------
+  const mapLoad = document.getElementById("mapLoad");
+  if (mapLoad) {
+    mapLoad.addEventListener("click", () => {
+      const frame = document.createElement("iframe");
+      frame.title = "Map showing the Velora studio in Munich";
+      frame.loading = "lazy";
+      frame.src = "https://www.openstreetmap.org/export/embed.html?bbox=11.578%2C48.158%2C11.595%2C48.167&layer=mapnik&marker=48.1625%2C11.5866";
+      const box = document.getElementById("mapConsent");
+      box.innerHTML = "";
+      box.appendChild(frame);
+    });
+  }
+
+  // ---------- FAQ accordion ----------
+  const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+  faqItems.forEach((item) => {
+    const summary = item.querySelector("summary");
+    const content = item.querySelector(".faq-body");
+    summary.addEventListener("click", (e) => {
+      if (reduceMotion) return;
+      e.preventDefault();
+      if (item.open) {
+        const anim = content.animate([{ height: `${content.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 350, easing: "ease-out" });
+        anim.onfinish = () => { item.open = false; };
+      } else {
+        item.open = true;
+        content.animate([{ height: "0px", opacity: 0 }, { height: `${content.offsetHeight}px`, opacity: 1 }], { duration: 400, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+      }
+    });
   });
 
   // ---------- Priority booking form (demo: hook up your own endpoint) ----------

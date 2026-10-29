@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Velora</title>
+  <meta name="description" content="The story of Velora: an independent Munich specialist for German performance car rental and care since 2014.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-about">
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2.5-5.5A2 2 0 0 1 5.3 6h13.4a2 2 0 0 1 1.8 1.5L23 13v4a2 2 0 1 1-4 0M1 13h22M6 17v1M18 17v1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m12 15 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.2A4 4 0 0 0 9 11v2a4 4 0 0 0 6.5 2.8M7 10.5h6M7 13.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-tyre" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3c.6 4.3 2.7 6.4 7 7-4.3.6-6.4 2.7-7 7-.6-4.3-2.7-6.4-7-7 4.3-.6 6.4-2.7 7-7zM19 15c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3.2 6 1.8 6 5 0 1.4-1.3 2.7-3 2.7s-3-1.1-3-2.5M12 5.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.7-1.3a4 4 0 0 0-5-5L3 9l3-3 3 3 1.3-1.7a4 4 0 0 0 4.4-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 8.5-2 5-5 2 2-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.6 7L12 17.4 5.7 21l1.6-7L2 9.3l7-.7z" fill="currentColor"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z" fill="currentColor"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.2H7.5V12h2.8v10H14V12h2.8l.4-3.5z" fill="currentColor"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+  <!-- ================= HEADER ================= -->
+  <header class="page-header" id="top">
+    <div class="container page-header-inner">
+      <a href="index.html" class="logo">Velora</a>
+      <nav aria-label="Primary">
+        <ul class="page-nav">
+          <li><a href="about.html" class="is-current" aria-current="page">About</a></li>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="page-header-actions">
+        <a href="contact.html" class="btn btn-primary" data-magnetic>Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      </div>
+    </div>
+  </header>
+
+    <!-- Slide-out menu -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <nav class="drawer" id="drawer" aria-label="Menu">
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="icon"><use href="#i-close"/></svg></button>
+      <ul class="drawer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="drawer-foot">
+        <a href="tel:+498912345678">+49 89 1234 5678</a>
+        <a href="mailto:hello@velora.de">hello@velora.de</a>
+        <span>Leopoldstraße 112, 80802 München</span>
+      </div>
+    </nav>
+
+  <main>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="page-hero-card">
+        <div class="hero-media"><img class="hero-bg" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2400&q=80" alt="Performance car parked on a city street"></div>
+        <div class="hero-overlay"></div>
+        <div class="page-hero-content">
+          <nav class="breadcrumb anim" style="--d: .2s" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">About</span></nav>
+          <span class="eyebrow anim" style="--d: .3s">About Velora</span>
+          <h1 class="hero-title page-hero-title">
+            <span class="line"><span style="--d: 0.35s">Engineered in Germany,</span></span>
+            <span class="line"><span style="--d: 0.47s">Cared for in Munich</span></span>
+          </h1>
+          <p class="page-hero-intro anim" style="--d: .6s">One workshop, one standard. We rent the cars we service and service the cars we rent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STORY ================= -->
+    <section class="section about" id="story">
+      <div class="container about-grid">
+        <span class="eyebrow reveal reveal-left">Our Story</span>
+        <div class="about-body">
+          <h2 class="about-lead reveal">Velora started with a simple idea: the people who rent you a <span class="text-primary">Porsche</span> should be the same people who know how to look after one.</h2>
+          <div class="two-col reveal">
+            <p class="muted">Founded in 2014 by Kfz-Meister Markus Brandt, Velora began as a small independent workshop for German performance cars. Owners came for manufacturer-spec servicing without dealer prices and stayed for the honest advice.</p>
+            <p class="muted">Today we combine a curated rental fleet with a full care studio under one roof in Munich. Because every rental car is maintained by our own technicians, we hand over cars we know inside out.</p>
+          </div>
+          <div class="stats">
+            <div class="stat reveal"><div class="stat-num"><span data-count="12">0</span></div><p class="stat-label">Years in Munich</p></div>
+            <div class="stat reveal"><div class="stat-num"><span data-count="18">0</span></div><p class="stat-label">Specialists on the Team</p></div>
+            <div class="stat reveal"><div class="stat-num"><span data-count="40">0</span>+</div><p class="stat-label">Cars in the Fleet</p></div>
+            <div class="stat reveal"><div class="stat-num"><span data-count="4.9" data-decimals="1">0</span>/5</div><p class="stat-label">Average Rating</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee marquee--outline" aria-label="Porsche, BMW M, Mercedes-AMG, Audi Sport, Volkswagen, Mercedes-Benz, BMW, Audi, MINI">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW M</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-AMG</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi Sport</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span></div>
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW M</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-AMG</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi Sport</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span></div>
+      </div>
+    </div>
+
+    <!-- ================= VALUES ================= -->
+    <section class="section why">
+      <div class="container why-grid why-grid--4">
+        <div class="why-intro">
+          <span class="eyebrow reveal">Our Values</span>
+          <h2 class="section-title reveal">What Drives Us.</h2>
+        </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon"><use href="#i-badge"/></svg></span>
+            <h3>Precision</h3>
+            <p class="muted">We follow manufacturer procedures to the letter, from torque settings to oil specifications.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon"><use href="#i-euro"/></svg></span>
+            <h3>Transparency</h3>
+            <p class="muted">Fixed prices in euros including VAT. Every extra is approved by you before we start.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <h3>Responsibility</h3>
+            <p class="muted">Fully insured rentals, documented handovers and a digital record of every job.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon"><use href="#i-sparkle"/></svg></span>
+            <h3>Passion</h3>
+            <p class="muted">We are drivers first. Every car leaves us the way we would want to receive it.</p>
+          </article>
+      </div>
+    </section>
+
+    <!-- ================= MILESTONES ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">Milestones</span>
+          <h2 class="section-title reveal">From Two Bays to Forty Cars.</h2>
+        </div>
+        <ol class="milestones">
+          <li class="milestone reveal">
+            <span class="milestone-year">2014</span>
+            <p>Velora opens a two-bay workshop in Schwabing, specialising in BMW and Porsche servicing.</p>
+          </li>
+          <li class="milestone reveal">
+            <span class="milestone-year">2017</span>
+            <p>The detailing studio opens, adding paint correction and ceramic coating.</p>
+          </li>
+          <li class="milestone reveal">
+            <span class="milestone-year">2020</span>
+            <p>Our rental fleet launches with six cars, all maintained in-house.</p>
+          </li>
+          <li class="milestone reveal">
+            <span class="milestone-year">2023</span>
+            <p>Testing partner on site for HU/AU, plus climate-controlled tyre storage.</p>
+          </li>
+          <li class="milestone reveal">
+            <span class="milestone-year">2026</span>
+            <p>40+ performance cars in the fleet and over 3,500 services completed.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= TEAM ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <span class="eyebrow reveal">The Team</span>
+            <h2 class="section-title reveal">People Behind the Keys.</h2>
+          </div>
+          <p class="muted section-head-note reveal reveal-right">Technicians, detailers and rental specialists, all under one roof in Schwabing.</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card reveal-once">
+            <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Markus Brandt" loading="lazy"></div>
+            <h3>Markus Brandt</h3>
+            <p class="muted">Founder & Managing Director</p>
+          </article>
+          <article class="team-card reveal-once">
+            <div class="team-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="Portrait of Katrin Vogel" loading="lazy"></div>
+            <h3>Katrin Vogel</h3>
+            <p class="muted">Head of Rental</p>
+          </article>
+          <article class="team-card reveal-once">
+            <div class="team-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Stefan Lehmann" loading="lazy"></div>
+            <h3>Stefan Lehmann</h3>
+            <p class="muted">Master Technician (Kfz-Meister)</p>
+          </article>
+          <article class="team-card reveal-once">
+            <div class="team-photo"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Portrait of Julia Sommer" loading="lazy"></div>
+            <h3>Julia Sommer</h3>
+            <p class="muted">Detailing Studio Lead</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section cta-band-section">
+      <div class="container">
+        <div class="cta-band reveal reveal-scale">
+          <div>
+            <h2 class="section-title">Visit the Studio in Schwabing.</h2>
+            <p class="muted">Come by for a coffee, a test sit in the fleet or a chat about your own car.</p>
+          </div>
+          <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary" data-magnetic>Plan a Visit <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          <a href="fleet.html" class="btn btn-light" data-magnetic>See the Fleet <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer reveal-once" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Left: logo + priority booking -->
+        <div class="footer-left reveal">
+          <a href="index.html" class="logo footer-logo">Velora</a>
+
+          <div class="subscribe-card">
+            <div class="subscribe-head">
+              <h2 class="subscribe-title">Get priority booking</h2>
+              <p class="muted">Early access to new arrivals in the fleet and members-only rates on rental and care.</p>
+            </div>
+
+            <form class="subscribe-form" id="subscribeForm" aria-label="Priority booking sign-up">
+              <input class="subscribe-input" type="email" name="email" placeholder="Enter your email" aria-label="Email address" maxlength="256" autocomplete="email" required>
+              <button type="submit" class="btn btn-primary">Join VIP <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></button>
+            </form>
+            <p class="subscribe-message" id="subscribeMessage" role="status" hidden>Thanks! You're on the VIP list.</p>
+
+            <p class="subscribe-note">No spam. Unsubscribe at any time.</p>
+          </div>
+        </div>
+
+        <!-- Right: menus + contact -->
+        <div class="footer-right">
+          <div class="footer-menus">
+            <div class="footer-col reveal">
+              <h3 class="footer-title">Pages</h3>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="is-current">About</a></li>
+                <li><a href="fleet.html">Fleet</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-col reveal">
+              <h3 class="footer-title">Support</h3>
+              <ul class="footer-links">
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="terms.html">Rental Terms (AGB)</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-col reveal">
+            <h3 class="footer-title">Contact info</h3>
+            <ul class="footer-links">
+              <li><a href="tel:+498912345678">+49 89 1234 5678</a></li>
+              <li><a href="mailto:hello@velora.de">hello@velora.de</a></li>
+              <li><a href="contact.html#visit">Leopoldstraße 112<br>80802 München</a></li>
+              <li class="footer-hours">Mon – Fri: 08:00 – 18:00<br>Sat: 09:00 – 14:00</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+          <p>&copy; <span id="year">2026</span> Velora GmbH. All rights reserved.</p>
+          <ul class="social-list">
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-item" aria-label="Instagram" data-magnetic><svg><use href="#i-instagram"/></svg></a></li>
+            <li><a href="https://x.com/" target="_blank" rel="noopener" class="social-item" aria-label="X" data-magnetic><svg><use href="#i-x"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="social-item" aria-label="LinkedIn" data-magnetic><svg><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-item" aria-label="Facebook" data-magnetic><svg><use href="#i-facebook"/></svg></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Large background wordmark -->
+    <div class="footer-wordmark" aria-hidden="true">Velora</div>
+  </footer>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg class="icon"><use href="#i-arrow"/></svg></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

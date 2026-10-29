@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services | Velora</title>
-  <meta name="description" content="Explore Velora car care services: express wash, premium detail, interior detail, ceramic coating and window tint.">
+  <title>Services | Velora</title>
+  <meta name="description" content="Manufacturer-spec servicing, diagnostics, HU/AU preparation, tyre storage and detailing for Porsche, BMW, Mercedes-Benz, Audi and VW in Munich.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-services">
+  <div class="page-transition" aria-hidden="true"></div>
 
   <!-- Icon sprite -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -22,6 +23,17 @@
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2.5-5.5A2 2 0 0 1 5.3 6h13.4a2 2 0 0 1 1.8 1.5L23 13v4a2 2 0 1 1-4 0M1 13h22M6 17v1M18 17v1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m12 15 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.2A4 4 0 0 0 9 11v2a4 4 0 0 0 6.5 2.8M7 10.5h6M7 13.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-tyre" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3c.6 4.3 2.7 6.4 7 7-4.3.6-6.4 2.7-7 7-.6-4.3-2.7-6.4-7-7 4.3-.6 6.4-2.7 7-7zM19 15c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3.2 6 1.8 6 5 0 1.4-1.3 2.7-3 2.7s-3-1.1-3-2.5M12 5.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.7-1.3a4 4 0 0 0-5-5L3 9l3-3 3 3 1.3-1.7a4 4 0 0 0 4.4-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 8.5-2 5-5 2 2-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
@@ -36,84 +48,169 @@
     <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
-
   <!-- ================= HEADER ================= -->
   <header class="page-header" id="top">
     <div class="container page-header-inner">
       <a href="index.html" class="logo">Velora</a>
       <nav aria-label="Primary">
         <ul class="page-nav">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="fleet.html">Fleet</a></li>
           <li><a href="services.html" class="is-current" aria-current="page">Services</a></li>
-          <li><a href="test.html#models">Models</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <a href="index.html" class="btn btn-outline">Back to Home <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+      <div class="page-header-actions">
+        <a href="contact.html" class="btn btn-primary" data-magnetic>Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      </div>
     </div>
   </header>
 
+    <!-- Slide-out menu -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <nav class="drawer" id="drawer" aria-label="Menu">
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="icon"><use href="#i-close"/></svg></button>
+      <ul class="drawer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="drawer-foot">
+        <a href="tel:+498912345678">+49 89 1234 5678</a>
+        <a href="mailto:hello@velora.de">hello@velora.de</a>
+        <span>Leopoldstraße 112, 80802 München</span>
+      </div>
+    </nav>
+
   <main>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="page-hero-card">
+        <div class="hero-media"><img class="hero-bg" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2400&q=80" alt="Car on a workshop lift"></div>
+        <div class="hero-overlay"></div>
+        <div class="page-hero-content">
+          <nav class="breadcrumb anim" style="--d: .2s" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Services</span></nav>
+          <span class="eyebrow anim" style="--d: .3s">Care Services</span>
+          <h1 class="hero-title page-hero-title">
+            <span class="line"><span style="--d: 0.35s">Specialist Care</span></span>
+            <span class="line"><span style="--d: 0.47s">for German Cars</span></span>
+          </h1>
+          <p class="page-hero-intro anim" style="--d: .6s">Manufacturer-spec servicing, diagnostics, HU/AU, tyres and detailing, from technicians who only work on German cars.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= SERVICES GALLERY ================= -->
     <section class="section works" id="services">
       <div class="container">
         <div class="section-head section-head--center">
           <span class="eyebrow reveal">Our Services</span>
-          <h1 class="section-title reveal">Vehicles We've Recently Serviced.</h1>
-          <p class="muted works-intro reveal">From a quick express wash to long-lasting ceramic protection, explore our services and the results behind them.</p>
+          <h2 class="section-title reveal">Everything Your Car Needs, Under One Roof.</h2>
+          <p class="muted works-intro reveal">Select a service to see what's included and book a slot.</p>
         </div>
 
         <div class="works-gallery">
-          <!-- Row 1 -->
           <div class="works-row">
             <a href="index.html#service-pane-1" class="work w1 reveal-once">
-              <div class="work-media"><img src="https://images.pexels.com/photos/12861709/pexels-photo-12861709.jpeg?auto=compress&w=1000" alt="Black SUV after an express wash" loading="lazy"></div>
+              <div class="work-media"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=80" alt="Technician servicing a car on a lift" loading="lazy"></div>
               <div class="work-label">
-                <span class="work-name">Express Wash</span>
-                <span class="work-meta">From $49 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+                <span class="work-name">Inspection & Oil Service</span>
+                <span class="work-meta">From €249 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
               </div>
             </a>
             <a href="index.html#service-pane-2" class="work w2 work--label-top reveal-once">
-              <div class="work-media"><img src="https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&w=1600" alt="Sports car after a premium detail" loading="lazy"></div>
+              <div class="work-media"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1400&q=80" alt="Diagnostic tablet connected to a car" loading="lazy"></div>
               <div class="work-label">
-                <span class="work-name">Premium Detail</span>
-                <span class="work-meta">From $149 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+                <span class="work-name">Diagnostics & Repairs</span>
+                <span class="work-meta">Diagnosis from €89 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
               </div>
             </a>
           </div>
 
-          <!-- Row 2 -->
           <div class="works-row">
-            <a href="index.html#service-pane-4" class="work w3 reveal-once">
-              <div class="work-media"><img src="https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&w=1600" alt="Car with a fresh ceramic coating" loading="lazy"></div>
+            <a href="index.html#service-pane-5" class="work w3 reveal-once">
+              <div class="work-media"><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1400&q=80" alt="Freshly detailed car with glossy paint" loading="lazy"></div>
               <div class="work-label">
-                <span class="work-name">Ceramic Coating</span>
-                <span class="work-meta">From $599 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+                <span class="work-name">Detailing & Ceramic Coating</span>
+                <span class="work-meta">From €179 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
               </div>
             </a>
           </div>
 
-          <!-- Row 3 -->
           <div class="works-row">
             <a href="index.html#service-pane-3" class="work w4 reveal-once">
-              <div class="work-media"><img src="https://images.pexels.com/photos/6872601/pexels-photo-6872601.jpeg?auto=compress&w=1400" alt="Car interior after detailing" loading="lazy"></div>
+              <div class="work-media"><img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?auto=format&fit=crop&w=1400&q=80" alt="Mechanic checking under a car" loading="lazy"></div>
               <div class="work-label">
-                <span class="work-name">Interior Detail</span>
-                <span class="work-meta">From $119 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+                <span class="work-name">HU/AU Preparation</span>
+                <span class="work-meta">From €139 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
               </div>
             </a>
-            <a href="index.html#service-pane-5" class="work w5 work--label-top reveal-once">
-              <div class="work-media"><img src="https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&w=1400" alt="Car with new window tint" loading="lazy"></div>
+            <a href="index.html#service-pane-4" class="work w5 work--label-top reveal-once">
+              <div class="work-media"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1400&q=80" alt="Performance tyre and alloy wheel" loading="lazy"></div>
               <div class="work-label">
-                <span class="work-name">Window Tint</span>
-                <span class="work-meta">From $249 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+                <span class="work-name">Tyre Service & Storage</span>
+                <span class="work-meta">Wheel change from €49 <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
               </div>
             </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="section-cta section-cta--center">
-          <a href="index.html#services" class="btn btn-outline">Compare All Services <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+    <div class="marquee marquee--outline" aria-label="Porsche, BMW, Mercedes-Benz, Audi, Volkswagen, MINI, Cupra">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Cupra</span><span class="marquee-dot" aria-hidden="true"></span></div>
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Cupra</span><span class="marquee-dot" aria-hidden="true"></span></div>
+      </div>
+    </div>
+
+    <!-- ================= PRICES ================= -->
+    <section class="section">
+      <div class="container prices">
+        <div class="prices-intro">
+          <span class="eyebrow reveal">Prices</span>
+          <h2 class="section-title reveal">Clear Prices, Agreed Upfront.</h2>
+          <p class="muted reveal">Guide prices in euros including 19% VAT. You receive a fixed quote for your exact model before any work starts.</p>
+          <div class="reveal" style="margin-top: 28px"><a href="contact.html?topic=service" class="btn btn-primary" data-magnetic>Get a Quote <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a></div>
+        </div>
+        <div class="table-wrap reveal">
+          <table class="price-table">
+            <thead><tr><th scope="col">Service</th><th scope="col">Vehicle</th><th scope="col">Price</th></tr></thead>
+            <tbody>
+            <tr><th scope="row">Inspection & oil service</th><td>Compact / mid-size</td><td>from €249</td></tr>
+            <tr><th scope="row">Inspection & oil service</th><td>Performance / AMG / M / RS</td><td>from €449</td></tr>
+            <tr><th scope="row">Diagnosis (full scan)</th><td>All models</td><td>from €89</td></tr>
+            <tr><th scope="row">HU/AU preparation & test</th><td>All models</td><td>from €139</td></tr>
+            <tr><th scope="row">Seasonal wheel change</th><td>Up to 20"</td><td>from €49</td></tr>
+            <tr><th scope="row">Tyre storage (per season)</th><td>Set of 4, incl. wash</td><td>€79</td></tr>
+            <tr><th scope="row">Interior detail</th><td>All models</td><td>from €179</td></tr>
+            <tr><th scope="row">Ceramic coating (3 years)</th><td>Incl. paint correction</td><td>from €1,190</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section cta-band-section">
+      <div class="container">
+        <div class="cta-band reveal reveal-scale">
+          <div>
+            <h2 class="section-title">Warranty-Safe, Dealer-Level Care.</h2>
+            <p class="muted">Under EU rules you can service your car with an independent specialist without losing the manufacturer warranty.</p>
+          </div>
+          <div class="cta-band-actions">
+          <a href="contact.html?topic=service" class="btn btn-primary" data-magnetic>Book a Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          <a href="post-independent-servicing.html" class="btn btn-light" data-magnetic>Learn How <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          </div>
         </div>
       </div>
     </section>
@@ -126,12 +223,12 @@
 
         <!-- Left: logo + priority booking -->
         <div class="footer-left reveal">
-          <a href="#top" class="logo footer-logo">Velora</a>
+          <a href="index.html" class="logo footer-logo">Velora</a>
 
           <div class="subscribe-card">
             <div class="subscribe-head">
               <h2 class="subscribe-title">Get priority booking</h2>
-              <p class="muted">Exclusive offers and early access to premium vehicles.</p>
+              <p class="muted">Early access to new arrivals in the fleet and members-only rates on rental and care.</p>
             </div>
 
             <form class="subscribe-form" id="subscribeForm" aria-label="Priority booking sign-up">
@@ -140,7 +237,7 @@
             </form>
             <p class="subscribe-message" id="subscribeMessage" role="status" hidden>Thanks! You're on the VIP list.</p>
 
-            <p class="subscribe-note">We will contact you within 24 hours for availability details.</p>
+            <p class="subscribe-note">No spam. Unsubscribe at any time.</p>
           </div>
         </div>
 
@@ -151,21 +248,20 @@
               <h3 class="footer-title">Pages</h3>
               <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="fleet.html">Fleet</a></li>
                 <li><a href="services.html" class="is-current">Services</a></li>
-                <li><a href="test.html#models">Models</a></li>
-                <li><a href="index.html#process">How It Works</a></li>
-                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
               </ul>
             </div>
             <div class="footer-col reveal">
               <h3 class="footer-title">Support</h3>
               <ul class="footer-links">
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Rental Policy</a></li>
-                <li><a href="#">Insurance</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="terms.html">Rental Terms (AGB)</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
@@ -173,21 +269,22 @@
           <div class="footer-col reveal">
             <h3 class="footer-title">Contact info</h3>
             <ul class="footer-links">
-              <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
-              <li><a href="mailto:hello@velora.com">hello@velora.com</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubai" target="_blank" rel="noopener">Sheikh Zayed Road,<br>Dubai, UAE</a></li>
+              <li><a href="tel:+498912345678">+49 89 1234 5678</a></li>
+              <li><a href="mailto:hello@velora.de">hello@velora.de</a></li>
+              <li><a href="contact.html#visit">Leopoldstraße 112<br>80802 München</a></li>
+              <li class="footer-hours">Mon – Fri: 08:00 – 18:00<br>Sat: 09:00 – 14:00</li>
             </ul>
           </div>
         </div>
 
         <!-- Bottom bar -->
         <div class="footer-bottom">
-          <p>&copy; <span id="year">2026</span> Velora. All rights reserved.</p>
+          <p>&copy; <span id="year">2026</span> Velora GmbH. All rights reserved.</p>
           <ul class="social-list">
-            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-item" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a></li>
-            <li><a href="https://x.com/" target="_blank" rel="noopener" class="social-item" aria-label="X"><svg><use href="#i-x"/></svg></a></li>
-            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="social-item" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a></li>
-            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-item" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-item" aria-label="Instagram" data-magnetic><svg><use href="#i-instagram"/></svg></a></li>
+            <li><a href="https://x.com/" target="_blank" rel="noopener" class="social-item" aria-label="X" data-magnetic><svg><use href="#i-x"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="social-item" aria-label="LinkedIn" data-magnetic><svg><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-item" aria-label="Facebook" data-magnetic><svg><use href="#i-facebook"/></svg></a></li>
           </ul>
         </div>
 

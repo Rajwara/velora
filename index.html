@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Velora | Premium Car Rentals</title>
-  <meta name="description" content="Velora is your premier destination for luxury car rentals and unmatched service.">
+  <title>Velora | German Performance Car Rental & Care, Munich</title>
+  <meta name="description" content="Velora rents and cares for German performance cars in Munich: Porsche, BMW M, Mercedes-AMG and Audi Sport rental, plus manufacturer-spec servicing, HU/AU, tyres and detailing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page-home">
+  <div class="page-transition" aria-hidden="true"></div>
 
   <!-- Icon sprite -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -22,6 +23,17 @@
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2.5-5.5A2 2 0 0 1 5.3 6h13.4a2 2 0 0 1 1.8 1.5L23 13v4a2 2 0 1 1-4 0M1 13h22M6 17v1M18 17v1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m12 15 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.2A4 4 0 0 0 9 11v2a4 4 0 0 0 6.5 2.8M7 10.5h6M7 13.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-tyre" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3c.6 4.3 2.7 6.4 7 7-4.3.6-6.4 2.7-7 7-.6-4.3-2.7-6.4-7-7 4.3-.6 6.4-2.7 7-7zM19 15c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3.2 6 1.8 6 5 0 1.4-1.3 2.7-3 2.7s-3-1.1-3-2.5M12 5.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.7-1.3a4 4 0 0 0-5-5L3 9l3-3 3 3 1.3-1.7a4 4 0 0 0 4.4-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 8.5-2 5-5 2 2-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
@@ -42,109 +54,119 @@
     <section class="hero">
       <div class="hero-card">
         <div class="hero-media">
-          <img class="hero-bg" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80" alt="Black sports car in a studio">
+          <img class="hero-bg" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80" alt="Black German sports car in a studio">
         </div>
         <div class="hero-overlay"></div>
 
         <header class="site-header">
-          <a href="#top" class="logo">Velora</a>
+          <a href="index.html" class="logo">Velora</a>
 
           <div class="header-right">
             <div class="nav-pill">
               <div class="dropdown">
                 <button class="nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
-                  Models <svg class="icon-sm"><use href="#i-chevron"/></svg>
+                  Fleet <svg class="icon-sm"><use href="#i-chevron"/></svg>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="test.html#models">Sports Cars</a></li>
-                  <li><a href="test.html#models">Luxury Sedans</a></li>
-                  <li><a href="test.html#models">SUVs</a></li>
-                  <li><a href="test.html#models">Convertibles</a></li>
+                  <li><a href="fleet.html?marque=porsche">Porsche</a></li>
+                  <li><a href="fleet.html?marque=bmw">BMW M</a></li>
+                  <li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li>
+                  <li><a href="fleet.html?marque=audi">Audi Sport</a></li>
+                  <li><a href="fleet.html">View full fleet</a></li>
                 </ul>
               </div>
-              <form class="nav-search" role="search" onsubmit="return false">
-                <input type="search" placeholder="Search..." aria-label="Search models">
+              <form class="nav-search" role="search" action="fleet.html" method="get">
+                <input type="search" name="q" placeholder="Search the fleet..." aria-label="Search the fleet">
                 <button type="submit" class="nav-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-search"/></svg></button>
               </form>
             </div>
 
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-              <span></span><span></span><span></span>
-            </button>
+        <span></span><span></span><span></span>
+      </button>
           </div>
         </header>
 
         <div class="hero-top">
           <div class="hero-loc anim" style="--d: .5s">
-            <span>Dubai, UAE</span>
+            <span>München, Germany</span>
             <span class="hero-loc-line"></span>
-            <span>Prime Collection by<br>Velora!</span>
+            <span>German Engineering<br>by Velora</span>
           </div>
-          <p class="hero-note anim" style="--d: .6s">Handpicked luxury and sports cars,<br>delivered ready for the road.</p>
+          <p class="hero-note anim" style="--d: .6s">Porsche, BMW M, Mercedes-AMG and Audi Sport.<br>Rented, serviced and detailed by specialists.</p>
         </div>
 
         <div class="hero-content">
-          <span class="eyebrow anim" style="--d: .7s">Car Rental</span>
+          <span class="eyebrow anim" style="--d: .7s">Rental &amp; Care</span>
           <h1 class="hero-title">
-            <span class="line"><span style="--d: .8s">Enjoy Easy Rides,</span></span>
-            <span class="line"><span style="--d: .95s">Pick Your Way</span></span>
+            <span class="line"><span style="--d: .8s">Drive German Precision,</span></span>
+            <span class="line"><span style="--d: .95s">Your Way</span></span>
           </h1>
         </div>
 
         <div class="hero-actions anim anim-up" style="--d: 1.1s">
-          <a href="test.html#models" class="hero-action">Book a Car <svg class="icon"><use href="#i-arrow"/></svg></a>
-          <a href="#contact" class="hero-action">Get in Touch <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="fleet.html" class="hero-action">Rent a Car <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="services.html" class="hero-action">Book a Service <svg class="icon"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
     <!-- Slide-out menu -->
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
-    <nav class="drawer" id="drawer" aria-label="Primary">
+    <nav class="drawer" id="drawer" aria-label="Menu">
       <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="icon"><use href="#i-close"/></svg></button>
       <ul class="drawer-links">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="test.html#models">Models</a></li>
-        <li><a href="#process">How It Works</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="drawer-foot">
-        <a href="tel:+11234567890">+1 (123) 456-7890</a>
-        <a href="mailto:hello@velora.com">hello@velora.com</a>
+        <a href="tel:+498912345678">+49 89 1234 5678</a>
+        <a href="mailto:hello@velora.de">hello@velora.de</a>
+        <span>Leopoldstraße 112, 80802 München</span>
       </div>
     </nav>
+
+
+    <div class="marquee " aria-label="Porsche, BMW M, Mercedes-AMG, Audi Sport, Volkswagen, Mercedes-Benz, BMW, Audi, MINI">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW M</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-AMG</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi Sport</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span></div>
+        <div class="marquee-group"><span class="marquee-item">Porsche</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW M</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-AMG</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi Sport</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Volkswagen</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Mercedes-Benz</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">BMW</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">Audi</span><span class="marquee-dot" aria-hidden="true"></span><span class="marquee-item">MINI</span><span class="marquee-dot" aria-hidden="true"></span></div>
+      </div>
+    </div>
+
     <!-- ================= ABOUT ================= -->
     <section class="section about" id="about">
       <div class="container about-grid">
-        <span class="eyebrow reveal reveal-left">About Us</span>
+        <span class="eyebrow reveal reveal-left">About Velora</span>
         <div class="about-body">
-          <h2 class="about-lead reveal">Discover the passion and expertise behind <span class="text-primary">Velora</span>, your premier destination for luxury car rentals and unmatched service.</h2>
+          <h2 class="about-lead reveal">Munich's home for German performance cars. <span class="text-primary">Velora</span> pairs a curated rental fleet with a specialist care studio, so every car we hand over is one we know inside out.</h2>
 
           <div class="stats">
             <div class="stat reveal">
-              <div class="stat-num"><span data-count="2.5" data-decimals="1">0</span>K+</div>
-              <p class="stat-label">Total Bookings</p>
+              <div class="stat-num"><span data-count="12">0</span></div>
+              <p class="stat-label">Years in Munich</p>
             </div>
             <div class="stat reveal">
-              <div class="stat-num"><span data-count="300">0</span>+</div>
-              <p class="stat-label">Models in Stock</p>
+              <div class="stat-num"><span data-count="40">0</span>+</div>
+              <p class="stat-label">Cars in the Fleet</p>
             </div>
             <div class="stat reveal">
-              <div class="stat-num"><span data-count="99">0</span>%</div>
-              <p class="stat-label">Happy Clients</p>
+              <div class="stat-num"><span data-count="3.5" data-decimals="1">0</span>K+</div>
+              <p class="stat-label">Services Completed</p>
             </div>
             <div class="stat reveal">
-              <div class="stat-num"><span data-count="50">0</span>+</div>
-              <p class="stat-label">Daily Bookings</p>
+              <div class="stat-num"><span data-count="4.9" data-decimals="1">0</span>/5</div>
+              <p class="stat-label">Average Rating</p>
             </div>
           </div>
 
           <div class="about-foot reveal">
-            <p class="muted">From weekend getaways to executive travel, we pair every client with a vehicle that fits the moment. Transparent pricing, flexible plans and a fleet maintained to showroom standards.</p>
-            <a href="test.html#models" class="btn btn-outline">Learn More <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+            <p class="muted">From a weekend on the Autobahn to scheduled servicing of your own BMW or Porsche, our technicians and rental team work from one workshop with one standard: German precision, transparent pricing and no surprises.</p>
+            <a href="about.html" class="btn btn-outline" data-magnetic>Our Story <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
           </div>
         </div>
       </div>
@@ -154,182 +176,182 @@
     <section class="section services" id="services">
       <div class="container">
         <div class="section-head section-head--center">
-          <span class="eyebrow reveal">Services</span>
-          <h2 class="section-title reveal">Services Designed Around Your Vehicle.</h2>
-          <p class="muted services-intro reveal">Professional mobile detailing tailored to your vehicle's condition, lifestyle, and maintenance needs.</p>
+          <span class="eyebrow reveal">Care Services</span>
+          <h2 class="section-title reveal">Specialist Care for German Cars.</h2>
+          <p class="muted services-intro reveal">Manufacturer-spec servicing, diagnostics and detailing for Porsche, BMW, Mercedes-Benz, Audi and Volkswagen, with your warranty protected.</p>
         </div>
 
         <div class="tabs reveal">
           <div class="tabs-menu" role="tablist" aria-label="Services">
-            <button class="tab" id="service-tab-1" type="button" role="tab" aria-selected="false" aria-controls="service-pane-1" tabindex="-1">
-              <span class="tab-num">01</span><span>Express Wash</span>
+            <button class="tab is-active" id="service-tab-1" type="button" role="tab" aria-selected="true" aria-controls="service-pane-1">
+              <span class="tab-num">01</span><span>Inspection & Oil Service</span>
             </button>
             <button class="tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-pane-2" tabindex="-1">
-              <span class="tab-num">02</span><span>Premium Detail</span>
+              <span class="tab-num">02</span><span>Diagnostics & Repairs</span>
             </button>
             <button class="tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-pane-3" tabindex="-1">
-              <span class="tab-num">03</span><span>Interior Detail</span>
+              <span class="tab-num">03</span><span>HU/AU Preparation</span>
             </button>
             <button class="tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-pane-4" tabindex="-1">
-              <span class="tab-num">04</span><span>Ceramic Coating</span>
+              <span class="tab-num">04</span><span>Tyre Service & Storage</span>
             </button>
-            <button class="tab is-active" id="service-tab-5" type="button" role="tab" aria-selected="true" aria-controls="service-pane-5">
-              <span class="tab-num">05</span><span>Window Tint</span>
+            <button class="tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-pane-5" tabindex="-1">
+              <span class="tab-num">05</span><span>Detailing & Ceramic Coating</span>
             </button>
           </div>
 
           <div class="tabs-content">
-          <div class="pane" id="service-pane-1" role="tabpanel" aria-labelledby="service-tab-1" hidden>
+          <div class="pane is-active is-visible" id="service-pane-1" role="tabpanel" aria-labelledby="service-tab-1">
             <div class="pane-top">
               <div class="pane-info">
-                <h3>Express Wash</h3>
-                <p class="muted pane-desc">A quick, thorough exterior clean that restores shine and removes everyday dirt and grime.</p>
-                <p class="pane-price">Starting at $49</p>
-                <a href="#contact" class="btn btn-light">Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+                <h3>Inspection & Oil Service</h3>
+                <p class="muted pane-desc">Scheduled servicing to manufacturer specification with OEM-quality parts and approved oils. Every job is recorded in your digital service history, so your warranty stays intact.</p>
+                <p class="pane-price">From €249</p>
+                <a href="contact.html?service=inspection" class="btn btn-light" data-magnetic>Book Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
               </div>
-              <div class="pane-img"><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=80" alt="Express Wash service" loading="lazy"></div>
+              <div class="pane-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=80" alt="Technician servicing a car on a lift" loading="lazy"></div>
             </div>
             <hr>
             <p class="muted pane-label">What's Included:</p>
             <ul class="features">
-              <li>Hand Wash &amp; Dry</li>
-              <li>Wheel &amp; Tire Clean</li>
-              <li>Tire Shine</li>
-              <li>Window Clean</li>
-              <li>Door Jamb Wipe</li>
-              <li>Spot-Free Rinse</li>
-              <li>Exterior Trim Wipe</li>
-              <li>Quick Interior Vacuum</li>
+              <li>Service to manufacturer schedule</li>
+              <li>Approved engine oil & filters</li>
+              <li>Digital service book entry</li>
+              <li>Brake & fluid check</li>
+              <li>Battery & lighting check</li>
+              <li>Service indicator reset</li>
+              <li>Fixed-price quote upfront</li>
+              <li>Courtesy check report</li>
             </ul>
           </div>
           <div class="pane" id="service-pane-2" role="tabpanel" aria-labelledby="service-tab-2" hidden>
             <div class="pane-top">
               <div class="pane-info">
-                <h3>Premium Detail</h3>
-                <p class="muted pane-desc">A complete inside-and-out detail for vehicles that deserve extra attention and care.</p>
-                <p class="pane-price">Starting at $149</p>
-                <a href="#contact" class="btn btn-light">Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+                <h3>Diagnostics & Repairs</h3>
+                <p class="muted pane-desc">Dealer-level diagnostics for Porsche, BMW, Mercedes-Benz, Audi and VW. We read every control unit, find the real fault and fix it with clear, itemised pricing.</p>
+                <p class="pane-price">Diagnosis from €89</p>
+                <a href="contact.html?service=diagnostics" class="btn btn-light" data-magnetic>Book Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
               </div>
-              <div class="pane-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1000&q=80" alt="Premium Detail service" loading="lazy"></div>
+              <div class="pane-img"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80" alt="Diagnostic tablet connected to a car" loading="lazy"></div>
             </div>
             <hr>
             <p class="muted pane-label">What's Included:</p>
             <ul class="features">
-              <li>Full Hand Wash</li>
-              <li>Clay Bar Treatment</li>
-              <li>Paint Sealant</li>
-              <li>Interior Deep Clean</li>
-              <li>Leather Conditioning</li>
-              <li>Dashboard Protection</li>
-              <li>Glass Treatment</li>
-              <li>Engine Bay Wipe</li>
+              <li>Full control-unit scan</li>
+              <li>Fault code interpretation</li>
+              <li>Electrical & sensor repairs</li>
+              <li>Brakes, discs & pads</li>
+              <li>Suspension & steering</li>
+              <li>Timing & engine work</li>
+              <li>Software & coding updates</li>
+              <li>Photo & video findings</li>
             </ul>
           </div>
           <div class="pane" id="service-pane-3" role="tabpanel" aria-labelledby="service-tab-3" hidden>
             <div class="pane-top">
               <div class="pane-info">
-                <h3>Interior Detail</h3>
-                <p class="muted pane-desc">Deep cleaning for seats, carpets and surfaces to bring back that fresh-car feel.</p>
-                <p class="pane-price">Starting at $119</p>
-                <a href="#contact" class="btn btn-light">Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+                <h3>HU/AU Preparation</h3>
+                <p class="muted pane-desc">We prepare your car for its general inspection (HU) and emissions test (AU), fix anything that would fail and present it to the on-site testing partner (TÜV/DEKRA).</p>
+                <p class="pane-price">From €139</p>
+                <a href="contact.html?service=hu-au" class="btn btn-light" data-magnetic>Book Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
               </div>
-              <div class="pane-img"><img src="https://images.unsplash.com/photo-1605618826115-fb9e775cfef2?auto=format&fit=crop&w=1000&q=80" alt="Interior Detail service" loading="lazy"></div>
+              <div class="pane-img"><img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?auto=format&fit=crop&w=1000&q=80" alt="Mechanic checking under a car" loading="lazy"></div>
             </div>
             <hr>
             <p class="muted pane-label">What's Included:</p>
             <ul class="features">
-              <li>Full Vacuum</li>
-              <li>Shampoo Carpets</li>
-              <li>Seat Extraction</li>
-              <li>Leather Care</li>
-              <li>Odor Removal</li>
-              <li>Vent Cleaning</li>
-              <li>Console Detailing</li>
-              <li>Interior Glass</li>
+              <li>Pre-inspection check</li>
+              <li>Lights & signalling</li>
+              <li>Brakes & tyres</li>
+              <li>Exhaust & emissions (AU)</li>
+              <li>Rust & chassis check</li>
+              <li>Inspection by testing partner</li>
+              <li>New plaque on pass</li>
+              <li>Repairs quoted before work</li>
             </ul>
           </div>
           <div class="pane" id="service-pane-4" role="tabpanel" aria-labelledby="service-tab-4" hidden>
             <div class="pane-top">
               <div class="pane-info">
-                <h3>Ceramic Coating</h3>
-                <p class="muted pane-desc">Long-lasting paint protection with deep gloss, hydrophobic properties, and easier upkeep.</p>
-                <p class="pane-price">Starting at $599</p>
-                <a href="#contact" class="btn btn-light">Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+                <h3>Tyre Service & Storage</h3>
+                <p class="muted pane-desc">Seasonal wheel changes, balancing and wheel alignment, plus climate-controlled storage for your summer or winter set. We remind you when it is time to switch.</p>
+                <p class="pane-price">Wheel change from €49</p>
+                <a href="contact.html?service=tyres" class="btn btn-light" data-magnetic>Book Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
               </div>
-              <div class="pane-img"><img src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?auto=format&fit=crop&w=1000&q=80" alt="Ceramic Coating service" loading="lazy"></div>
+              <div class="pane-img"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1000&q=80" alt="Performance tyre and alloy wheel" loading="lazy"></div>
             </div>
             <hr>
             <p class="muted pane-label">What's Included:</p>
             <ul class="features">
-              <li>Paint Decontamination</li>
-              <li>Paint Correction</li>
-              <li>Ceramic Application</li>
-              <li>Wheel Coating</li>
-              <li>Glass Coating</li>
-              <li>Hydrophobic Finish</li>
-              <li>UV Protection</li>
-              <li>Care Instructions</li>
+              <li>Seasonal wheel change</li>
+              <li>Balancing & valve check</li>
+              <li>Wheel alignment</li>
+              <li>Tread depth & age report</li>
+              <li>Climate-controlled storage</li>
+              <li>Wheel & tyre wash</li>
+              <li>TPMS sensor service</li>
+              <li>Seasonal reminder</li>
             </ul>
           </div>
-          <div class="pane is-active is-visible" id="service-pane-5" role="tabpanel" aria-labelledby="service-tab-5">
+          <div class="pane" id="service-pane-5" role="tabpanel" aria-labelledby="service-tab-5" hidden>
             <div class="pane-top">
               <div class="pane-info">
-                <h3>Window Tint</h3>
-                <p class="muted pane-desc">Enhance privacy, reduce interior heat, and improve driving comfort with professional window tint installation.</p>
-                <p class="pane-price">Starting at $249</p>
-                <a href="#contact" class="btn btn-light">Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+                <h3>Detailing & Ceramic Coating</h3>
+                <p class="muted pane-desc">Paint correction, ceramic coating and interior detailing for German paintwork and leather, done by hand in our studio. Ideal after a winter of road salt.</p>
+                <p class="pane-price">From €179</p>
+                <a href="contact.html?service=detailing" class="btn btn-light" data-magnetic>Book Service <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
               </div>
-              <div class="pane-img"><img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1000&q=80" alt="Window Tint service" loading="lazy"></div>
+              <div class="pane-img"><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=80" alt="Freshly detailed car with glossy paint" loading="lazy"></div>
             </div>
             <hr>
             <p class="muted pane-label">What's Included:</p>
             <ul class="features">
-              <li>Professional Installation</li>
-              <li>Premium Window Film</li>
-              <li>Heat Reduction</li>
-              <li>UV Protection</li>
-              <li>Enhanced Privacy</li>
-              <li>Clean Edge Finish</li>
-              <li>Bubble-Free Application</li>
-              <li>Post-Installation Care Guide</li>
+              <li>Hand wash & decontamination</li>
+              <li>Machine paint correction</li>
+              <li>Ceramic coating (2–5 years)</li>
+              <li>Wheel & caliper coating</li>
+              <li>Leather clean & conditioning</li>
+              <li>Alcantara care</li>
+              <li>Glass coating</li>
+              <li>Aftercare guide</li>
             </ul>
           </div>
           </div>
         </div>
 
         <div class="section-cta section-cta--center">
-          <a href="services.html" class="btn btn-outline">View All Services <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          <a href="services.html" class="btn btn-outline" data-magnetic>View All Services <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
         </div>
       </div>
     </section>
 
-    <!-- ================= HOW IT WORKS (car care) ================= -->
+    <!-- ================= HOW IT WORKS (care) ================= -->
     <section class="section hiw reveal-once" id="how-it-works">
       <div class="container hiw-grid">
         <div class="hiw-left">
           <div class="hiw-sticky">
             <div class="hiw-head">
-              <span class="eyebrow reveal">How It Works</span>
-              <h2 class="section-title reveal">Professional Car Care, Delivered In Three Simple Steps.</h2>
+              <span class="eyebrow reveal">How Care Works</span>
+              <h2 class="section-title reveal">Workshop Quality, Without the Workshop Hassle.</h2>
             </div>
           </div>
         </div>
 
         <div class="hiw-steps">
           <article class="hiw-step reveal-once">
-            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/4374843/pexels-photo-4374843.jpeg?auto=compress&w=1200" alt="Booking a car wash appointment on a phone" loading="lazy"></div>
-            <h3 class="hiw-step-title"><span class="hiw-step-num">01</span>Book In Minutes</h3>
-            <p class="muted">Choose the service that best fits your vehicle and preferred schedule. We'll confirm your appointment and handle the rest.</p>
+            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/4374843/pexels-photo-4374843.jpeg?auto=compress&w=1200" alt="Booking a service on a phone" loading="lazy"></div>
+            <h3 class="hiw-step-title"><span class="hiw-step-num">01</span>Book Online</h3>
+            <p class="muted">Pick your service and a time slot. You get a fixed-price quote before we touch the car, and nothing is added without your approval.</p>
           </article>
           <article class="hiw-step reveal-once">
-            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/6872163/pexels-photo-6872163.jpeg?auto=compress&w=1200" alt="Detailer arriving at a home driveway" loading="lazy"></div>
-            <h3 class="hiw-step-title"><span class="hiw-step-num">02</span>We Come To You</h3>
-            <p class="muted">Our fully equipped team arrives at your home or office with everything needed, no water or power hookup required.</p>
+            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/6872163/pexels-photo-6872163.jpeg?auto=compress&w=1200" alt="Technician collecting a car from a driveway" loading="lazy"></div>
+            <h3 class="hiw-step-title"><span class="hiw-step-num">02</span>We Collect &amp; Care</h3>
+            <p class="muted">Drop off in Schwabing or use our pick-up service across Munich. We send photo updates while your car is with us.</p>
           </article>
           <article class="hiw-step reveal-once">
-            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/6872601/pexels-photo-6872601.jpeg?auto=compress&w=1200" alt="Freshly detailed car" loading="lazy"></div>
-            <h3 class="hiw-step-title"><span class="hiw-step-num">03</span>Enjoy The Shine</h3>
-            <p class="muted">Sit back while we restore your car inside and out. Drive away with a spotless finish that lasts.</p>
+            <div class="hiw-step-img"><img src="https://images.pexels.com/photos/6872601/pexels-photo-6872601.jpeg?auto=compress&w=1200" alt="Freshly serviced car" loading="lazy"></div>
+            <h3 class="hiw-step-title"><span class="hiw-step-num">03</span>Drive Away</h3>
+            <p class="muted">Your car comes back serviced, cleaned and documented, with the digital service book updated and a clear report of what we did.</p>
           </article>
         </div>
       </div>
@@ -341,7 +363,7 @@
         <div class="section-head section-head--center">
           <span class="eyebrow reveal">Before &amp; After</span>
           <h2 class="section-title reveal">See The Difference.</h2>
-          <p class="muted ba-sub reveal">Compare the transformation and see how professional detailing can restore clarity, shine, and overall appearance.</p>
+          <p class="muted ba-sub reveal">Drag to compare. Road salt, swirl marks and tired leather, restored by hand in our Munich detailing studio.</p>
         </div>
 
         <div class="ba-wrap reveal reveal-scale">
@@ -367,29 +389,29 @@
     <section class="section why" id="why">
       <div class="container why-grid">
         <div class="why-intro">
-          <span class="eyebrow reveal">Why Choose Us</span>
-          <h2 class="section-title reveal">Exceptional Service in Every Mile, Every Time</h2>
+          <span class="eyebrow reveal">Why Velora</span>
+          <h2 class="section-title reveal">Built Around German Cars. Nothing Else.</h2>
         </div>
 
         <article class="feature-card reveal">
+          <span class="feature-icon"><svg class="icon"><use href="#i-badge"/></svg></span>
+          <h3>Marque Specialists</h3>
+          <p class="muted">Technicians trained on Porsche, BMW, Mercedes-Benz and VW Group platforms, using dealer-level diagnostic tools.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+          <h3>Warranty-Safe Servicing</h3>
+          <p class="muted">Manufacturer schedules, OEM-quality parts and approved oils, recorded in your digital service history.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon"><svg class="icon"><use href="#i-euro"/></svg></span>
+          <h3>Fixed, Transparent Prices</h3>
+          <p class="muted">All prices in euros including VAT. You approve every quote before work starts, with no hidden extras.</p>
+        </article>
+        <article class="feature-card reveal">
           <span class="feature-icon"><svg class="icon"><use href="#i-car"/></svg></span>
-          <h3>Luxurious Car Rentals</h3>
-          <p class="muted">Premium vehicles from the world's most respected marques, delivered spotless and fully fuelled.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="feature-icon"><svg class="icon"><use href="#i-calendar"/></svg></span>
-          <h3>Easy Booking Process</h3>
-          <p class="muted">Reserve in minutes online with instant confirmation and no hidden paperwork.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="feature-icon"><svg class="icon"><use href="#i-dollar"/></svg></span>
-          <h3>Flexible Pricing Plans</h3>
-          <p class="muted">Daily, weekly and monthly rates that adapt to how long and how far you want to go.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="feature-icon"><svg class="icon"><use href="#i-wrench"/></svg></span>
-          <h3>Well Maintained Fleet</h3>
-          <p class="muted">Every car is serviced on schedule and inspected before each trip for total peace of mind.</p>
+          <h3>Pick-up &amp; Delivery</h3>
+          <p class="muted">We deliver rentals to your hotel or Munich Airport and collect your own car for servicing.</p>
         </article>
       </div>
     </section>
@@ -399,107 +421,119 @@
       <div class="container">
         <div class="section-head section-head--center">
           <span class="eyebrow reveal">Testimonials</span>
-          <h2 class="section-title reveal">Heartfelt Reviews By<br>Velora Drivers</h2>
+          <h2 class="section-title reveal">What Our Drivers<br>Say About Velora</h2>
         </div>
 
         <div class="reviews">
           <div class="reviews-col">
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>The booking took two minutes and the car was waiting for me, detailed and ready. Easily the smoothest rental experience I've had.</blockquote>
-              <figcaption><strong>Daniel Harper</strong><span>Entrepreneur</span></figcaption>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Picked up a 911 for a weekend in the Alps. Spotless car, a proper handover and zero surprises on the final invoice.</blockquote>
+              <figcaption><strong>Lukas Hoffmann</strong><span>Munich</span></figcaption>
             </figure>
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>I rented a convertible for our anniversary trip along the coast. Immaculate car, friendly team and a price that was exactly what was quoted.</blockquote>
-              <figcaption><strong>Sophie Turner</strong><span>Designer</span></figcaption>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>They serviced my Audi to factory spec for noticeably less than the dealer and the digital service book was updated the same day.</blockquote>
+              <figcaption><strong>Sophie Wagner</strong><span>Augsburg</span></figcaption>
             </figure>
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>Velora is my go-to for client meetings. Every car feels brand new and the delivery service saves me so much time.</blockquote>
-              <figcaption><strong>Emily Sanders</strong><span>Consultant</span></figcaption>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>The HU/AU prep was painless. They flagged two small issues, fixed them and the car passed first time.</blockquote>
+              <figcaption><strong>Daniel Becker</strong><span>Stuttgart</span></figcaption>
             </figure>
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>Clear pricing, great communication and a stunning car. I've already booked my next weekend trip.</blockquote>
-              <figcaption><strong>Olivia Brooks</strong><span>Photographer</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="reviews-col">
-            <figure class="review">
-              <blockquote>From the moment I picked up the keys, everything was effortless. The car handled beautifully and support answered every call within seconds. I genuinely can't recommend Velora enough.</blockquote>
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <figcaption><strong>Michael Brooks</strong><span>Architect</span></figcaption>
-            </figure>
-            <figure class="review">
-              <blockquote>The flexible monthly plan was perfect while my own car was in for repairs. Zero hassle, zero surprises and a far nicer drive.</blockquote>
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <figcaption><strong>Thomas Reid</strong><span>Engineer</span></figcaption>
-            </figure>
-            <figure class="review">
-              <blockquote>Booked a sports car for a track-day weekend. The team walked me through everything and the car was in perfect condition. Unforgettable.</blockquote>
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <figcaption><strong>Laura Bennett</strong><span>Marketing Lead</span></figcaption>
-            </figure>
-            <figure class="review">
-              <blockquote>Premium service from start to finish. I'll never go back to the big rental chains.</blockquote>
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <figcaption><strong>Ryan Collins</strong><span>Developer</span></figcaption>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Ceramic coating on my new Taycan. The finish is incredible and the team explained aftercare properly.</blockquote>
+              <figcaption><strong>Mia Schulz</strong><span>Munich</span></figcaption>
             </figure>
           </div>
 
           <div class="reviews-col">
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>An incredible fleet and honest people. They upgraded us at no extra cost when our original choice was delayed. That's real service.</blockquote>
-              <figcaption><strong>James Carter</strong><span>Sales Director</span></figcaption>
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>First time on the Autobahn and the team gave me a full briefing before I left. The M4 was mint and the delivery to my hotel was on time to the minute.</blockquote>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <figcaption><strong>James Carter</strong><span>Visiting from London</span></figcaption>
             </figure>
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>I needed a luxury SUV for a family wedding at short notice. Velora delivered it to our hotel the same afternoon, spotless and fully fuelled. Everyone wanted to know where we got it.</blockquote>
-              <figcaption><strong>Emily Sanders</strong><span>Event Planner</span></figcaption>
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Winter tyres swapped and my summer set stored. They even sent a reminder in October. Exactly what I want from a workshop.</blockquote>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <figcaption><strong>Lena Fischer</strong><span>Rosenheim</span></figcaption>
             </figure>
             <figure class="review">
-              <img class="review-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&h=120&q=80" alt="" loading="lazy">
-              <blockquote>Smooth process, beautiful car, fair price. Exactly what renting a car should feel like.</blockquote>
-              <figcaption><strong>Michael Rossi</strong><span>Chef</span></figcaption>
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Velora found an electrical fault two other garages missed. Clear photos, clear pricing, fixed in a day.</blockquote>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <figcaption><strong>Thomas Klein</strong><span>Ingolstadt</span></figcaption>
+            </figure>
+            <figure class="review">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Rented the G 63 for a family wedding. Immaculate inside and out.</blockquote>
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <figcaption><strong>Anna Richter</strong><span>Munich</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="reviews-col">
+            <figure class="review">
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Pick-up and delivery for my BMW service made it effortless. I never had to leave the office.</blockquote>
+              <figcaption><strong>Felix Neumann</strong><span>Regensburg</span></figcaption>
+            </figure>
+            <figure class="review">
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>We drove an RS 6 down the Romantic Road. Huge space for luggage, unreal performance, and the team helped plan the route.</blockquote>
+              <figcaption><strong>Emily Sanders</strong><span>Visiting from Boston</span></figcaption>
+            </figure>
+            <figure class="review">
+              <img class="review-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80&h=120" alt="" loading="lazy">
+              <span class="review-stars" aria-label="5 out of 5 stars"><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg><svg class="icon-sm"><use href="#i-star"/></svg></span>
+              <blockquote>Fair fixed prices and honest advice. They talked me out of a repair I didn't need yet.</blockquote>
+              <figcaption><strong>Jonas Weber</strong><span>Munich</span></figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= PROCESS ================= -->
+    <!-- ================= RENTAL PROCESS ================= -->
     <section class="section process" id="process">
       <div class="container process-grid">
         <div class="process-intro">
-          <span class="eyebrow reveal">How It Works</span>
-          <h2 class="section-title reveal">Four Simple Steps to Your Next Drive</h2>
-          <p class="muted reveal">We've stripped away the paperwork and waiting so you can spend less time at the counter and more time on the road.</p>
+          <span class="eyebrow reveal">How Renting Works</span>
+          <h2 class="section-title reveal">From Booking to Autobahn in Four Steps</h2>
+          <p class="muted reveal">Every rental includes comprehensive insurance, 250 free kilometres per day and a personal handover from our team.</p>
+          <div class="reveal" style="margin-top: 32px"><a href="fleet.html" class="btn btn-outline" data-magnetic>Browse the Fleet <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a></div>
         </div>
 
         <ol class="timeline" id="timeline">
           <li class="timeline-progress" aria-hidden="true"></li>
           <li class="step reveal">
             <span class="step-icon"><svg class="icon"><use href="#i-compass"/></svg></span>
-            <h3>Browse Our Elite Fleet</h3>
-            <p class="muted">Explore sports cars, luxury sedans and SUVs with full specs, photos and transparent daily rates.</p>
+            <h3>Choose Your Car</h3>
+            <p class="muted">Browse Porsche, BMW M, Mercedes-AMG and Audi Sport models with full specs and daily rates in euros.</p>
           </li>
           <li class="step reveal">
-            <span class="step-icon"><svg class="icon"><use href="#i-car"/></svg></span>
-            <h3>Pick Your Ideal Vehicle</h3>
-            <p class="muted">Choose the model, dates and pick-up location that suit your plans, with optional extras.</p>
+            <span class="step-icon"><svg class="icon"><use href="#i-calendar"/></svg></span>
+            <h3>Pick Dates &amp; Extras</h3>
+            <p class="muted">Select your dates, kilometre package and extras such as an additional driver or child seat.</p>
           </li>
           <li class="step reveal">
-            <span class="step-icon"><svg class="icon"><use href="#i-mail"/></svg></span>
-            <h3>Submit Your Enquiry</h3>
-            <p class="muted">Send your request in seconds and receive confirmation from our team almost instantly.</p>
+            <span class="step-icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <h3>Verify &amp; Confirm</h3>
+            <p class="muted">Upload your licence and ID. Drivers must be 25+ with a licence held for at least 3 years.</p>
           </li>
           <li class="step reveal">
             <span class="step-icon"><svg class="icon"><use href="#i-key"/></svg></span>
-            <h3>Collect and Drive Away</h3>
-            <p class="muted">Pick up your keys or have the car delivered to your door, then enjoy the ride.</p>
+            <h3>Collect or Get Delivery</h3>
+            <p class="muted">Collect from our Munich studio or have the car delivered to your hotel or the airport.</p>
           </li>
         </ol>
       </div>
@@ -509,36 +543,39 @@
     <section class="section blog" id="blog">
       <div class="container">
         <div class="section-head section-head--center">
-          <span class="eyebrow reveal">Blog Posts</span>
-          <h2 class="section-title reveal">Engage with Premium<br>Rental Posts</h2>
+          <span class="eyebrow reveal">Journal</span>
+          <h2 class="section-title reveal">Guides for Driving<br>&amp; Owning in Germany</h2>
         </div>
 
         <div class="posts">
-          <a href="#blog" class="post reveal-once">
+          <a href="post-autobahn-guide.html" class="post reveal-once">
             <div class="post-media">
-              <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80" alt="Two people discussing in a showroom" loading="lazy">
-              <span class="post-tag">Guides</span>
+              <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+              <span class="post-tag">Driving</span>
             </div>
-            <h3>Guide To Choose The Right Car In A Showroom</h3>
+            <p class="post-meta">12 Oct 2026 · 6 min read</p>
+            <h3>Driving the Autobahn: 8 Rules Every Visitor Should Know</h3>
           </a>
-          <a href="#blog" class="post reveal-once">
+          <a href="post-winter-tyres.html" class="post reveal-once">
             <div class="post-media">
-              <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80" alt="Red sports car" loading="lazy">
-              <span class="post-tag">Events</span>
+              <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+              <span class="post-tag">Care</span>
             </div>
-            <h3>Velora Hosts Annual Auto Racing Grand Event</h3>
+            <p class="post-meta">28 Sep 2026 · 5 min read</p>
+            <h3>Winter Tyres in Germany: What the Law Actually Says</h3>
           </a>
-          <a href="#blog" class="post reveal-once">
+          <a href="post-hu-au-explained.html" class="post reveal-once">
             <div class="post-media">
-              <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="Car parked on a street" loading="lazy">
-              <span class="post-tag">Tips</span>
+              <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+              <span class="post-tag">Care</span>
             </div>
-            <h3>Guides For Maintaining Your Rental Car Perfectly</h3>
+            <p class="post-meta">09 Sep 2026 · 5 min read</p>
+            <h3>HU/AU Explained: Getting Your Car Through Its Inspection</h3>
           </a>
         </div>
 
         <div class="section-cta section-cta--center">
-          <a href="#blog" class="btn btn-outline">See All Posts <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
+          <a href="blog.html" class="btn btn-outline" data-magnetic>Read the Journal <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
         </div>
       </div>
     </section>
@@ -551,12 +588,12 @@
 
         <!-- Left: logo + priority booking -->
         <div class="footer-left reveal">
-          <a href="#top" class="logo footer-logo">Velora</a>
+          <a href="index.html" class="logo footer-logo">Velora</a>
 
           <div class="subscribe-card">
             <div class="subscribe-head">
               <h2 class="subscribe-title">Get priority booking</h2>
-              <p class="muted">Exclusive offers and early access to premium vehicles.</p>
+              <p class="muted">Early access to new arrivals in the fleet and members-only rates on rental and care.</p>
             </div>
 
             <form class="subscribe-form" id="subscribeForm" aria-label="Priority booking sign-up">
@@ -565,7 +602,7 @@
             </form>
             <p class="subscribe-message" id="subscribeMessage" role="status" hidden>Thanks! You're on the VIP list.</p>
 
-            <p class="subscribe-note">We will contact you within 24 hours for availability details.</p>
+            <p class="subscribe-note">No spam. Unsubscribe at any time.</p>
           </div>
         </div>
 
@@ -575,22 +612,21 @@
             <div class="footer-col reveal">
               <h3 class="footer-title">Pages</h3>
               <ul class="footer-links">
-                <li><a href="#top" class="is-current">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="index.html" class="is-current">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="fleet.html">Fleet</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="test.html#models">Models</a></li>
-                <li><a href="#process">How It Works</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
               </ul>
             </div>
             <div class="footer-col reveal">
               <h3 class="footer-title">Support</h3>
               <ul class="footer-links">
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Rental Policy</a></li>
-                <li><a href="#">Insurance</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="terms.html">Rental Terms (AGB)</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
@@ -598,21 +634,22 @@
           <div class="footer-col reveal">
             <h3 class="footer-title">Contact info</h3>
             <ul class="footer-links">
-              <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
-              <li><a href="mailto:hello@velora.com">hello@velora.com</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubai" target="_blank" rel="noopener">Sheikh Zayed Road,<br>Dubai, UAE</a></li>
+              <li><a href="tel:+498912345678">+49 89 1234 5678</a></li>
+              <li><a href="mailto:hello@velora.de">hello@velora.de</a></li>
+              <li><a href="contact.html#visit">Leopoldstraße 112<br>80802 München</a></li>
+              <li class="footer-hours">Mon – Fri: 08:00 – 18:00<br>Sat: 09:00 – 14:00</li>
             </ul>
           </div>
         </div>
 
         <!-- Bottom bar -->
         <div class="footer-bottom">
-          <p>&copy; <span id="year">2026</span> Velora. All rights reserved.</p>
+          <p>&copy; <span id="year">2026</span> Velora GmbH. All rights reserved.</p>
           <ul class="social-list">
-            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-item" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a></li>
-            <li><a href="https://x.com/" target="_blank" rel="noopener" class="social-item" aria-label="X"><svg><use href="#i-x"/></svg></a></li>
-            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="social-item" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a></li>
-            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-item" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-item" aria-label="Instagram" data-magnetic><svg><use href="#i-instagram"/></svg></a></li>
+            <li><a href="https://x.com/" target="_blank" rel="noopener" class="social-item" aria-label="X" data-magnetic><svg><use href="#i-x"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="social-item" aria-label="LinkedIn" data-magnetic><svg><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-item" aria-label="Facebook" data-magnetic><svg><use href="#i-facebook"/></svg></a></li>
           </ul>
         </div>
 
