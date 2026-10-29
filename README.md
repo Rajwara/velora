@@ -14,7 +14,7 @@ python3 -m http.server 8000
 
 | File | Page |
 |---|---|
-| `index.html` | Home, including rental packages / care plans toggle, pick-up & delivery map and road-trip carousel |
+| `index.html` | Home: intro (about, why Velora), then three chapters: 01 Rent (how renting works, road trips, delivery), 02 Care (services, how care works, before/after), 03 Choose (plans, testimonials, journal, call to action) |
 | `about.html` | About: story, values, milestones, team |
 | `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements, delivery map |
 | `services.html` | Care services gallery and price list |

@@ -114,7 +114,7 @@ address { font-style: normal; }
 .muted { color: var(--text-muted); }
 .text-primary { color: var(--primary); }
 
-.section { padding: 130px 0; }
+.section { padding: clamp(80px, 8vw, 112px) 0; }
 
 /* ---------- Eyebrow / labels ---------- */
 .eyebrow {
@@ -736,7 +736,7 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
 .ba-sub { max-width: 480px; margin: 18px auto 0; font-size: 16px; }
 .ba-wrap {
   position: relative;
-  max-width: 940px;
+  max-width: none;
   margin: 0 auto;
 }
 .ba-slider {
@@ -828,8 +828,8 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
   transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
 .ba-nav:hover { background: var(--primary); color: var(--dark); }
-.ba-prev { left: -96px; }
-.ba-next { right: -96px; }
+.ba-prev { left: 20px; }
+.ba-next { right: 20px; }
 
 /* =========================================================
    Services page gallery (staggered layout)
@@ -948,6 +948,75 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
 .page-nav a:hover::after,
 .page-nav a.is-current::after { transform: scaleX(1); }
 .models--page { padding-top: 80px; }
+
+/* =========================================================
+   Homepage structure: about intro, stats band, chapters
+   ========================================================= */
+.about-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+.about-main .eyebrow { margin-bottom: 20px; }
+.about-side { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.about-side p { font-size: 16px; }
+.stats--band { margin: clamp(48px, 6vw, 80px) 0 0; }
+
+.why-grid--4 .why-intro.section-head { margin-bottom: 20px; padding-right: 0; }
+
+.ba-slider { aspect-ratio: 16 / 7; }
+.ba-nav { z-index: 2; background: rgba(var(--bg-rgb), 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* Chapter dividers: big outlined number, title, short intro */
+.chapter { padding: clamp(56px, 6vw, 88px) 0 0; }
+.chapter-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr minmax(0, 420px);
+  align-items: end;
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(28px, 3vw, 40px) var(--edge) 0;
+}
+.chapter-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--edge);
+  right: var(--edge);
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), rgba(var(--fg-rgb), 0.14) 30%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s var(--ease);
+}
+.chapter.is-visible .chapter-inner::before { transform: scaleX(1); }
+.chapter-num {
+  font-family: var(--font-heading);
+  font-size: clamp(80px, 11vw, 168px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease) 0.2s, transform 1.2s var(--ease) 0.2s;
+}
+.chapter-body .eyebrow { margin-bottom: 14px; }
+.chapter-title {
+  font-size: clamp(30px, 3.6vw, 54px);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s var(--ease) 0.35s, transform 1s var(--ease) 0.35s;
+}
+.chapter-body .eyebrow,
+.chapter-text { opacity: 0; transition: opacity 1s var(--ease) 0.5s; }
+.chapter-text { font-size: 16px; padding-bottom: 6px; }
+.chapter.is-visible :is(.chapter-num, .chapter-title, .chapter-body .eyebrow, .chapter-text) { opacity: 1; transform: none; }
+.chapter + .section { padding-top: clamp(48px, 5vw, 72px); }
+:root[data-theme="light"] .chapter-num { -webkit-text-stroke-color: rgba(242, 106, 27, 0.7); }
 
 /* =========================================================
    Featured models (sticky stacked cards)
@@ -2541,6 +2610,7 @@ html.theme-changing *::after {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  .chapter-num, .chapter-title, .chapter-body .eyebrow, .chapter-text { opacity: 1; transform: none; }
   .reveal, .split .word > span, .model-title, .model-specs > div, .pane, .features li, .hiw-step, .work-label { opacity: 1; transform: none; }
   .model-title { transform: translateY(-50%); }
   .post-media, .work-media, .team-photo { clip-path: none; }
@@ -2570,8 +2640,10 @@ html.theme-changing *::after {
 }
 
 @media (max-width: 1024px) {
-  .section { padding: 100px 0; }
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-top { grid-template-columns: 1fr; align-items: start; }
+  .chapter-inner { grid-template-columns: auto 1fr; }
+  .chapter-text { grid-column: 1 / -1; max-width: 560px; }
   .footer-grid { grid-template-columns: 1fr; gap: 60px; }
   .footer-logo { margin-bottom: 32px; }
   .hero-content { flex-direction: column; gap: 20px; }
@@ -2602,6 +2674,7 @@ html.theme-changing *::after {
   .reviews { grid-template-columns: repeat(2, 1fr); }
   .reviews-col:nth-child(3) { display: none; }
   .page-nav { display: none; }
+  .ba-slider { aspect-ratio: 4 / 3; }
   .plan-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   .delivery-grid { grid-template-columns: 1fr; }
   .delivery-map { max-width: 520px; width: 100%; margin: 0 auto; }
@@ -2633,7 +2706,7 @@ html.theme-changing *::after {
 @media (max-width: 600px) {
   :root { --frame: 8px; --gutter: 16px; }
   body { font-size: 14px; }
-  .section { padding: 80px 0; }
+  .section { padding: 72px 0; }
   .logo { font-size: 26px; }
   .hero-card { height: max(600px, calc(100svh - 32px)); }
   .hero-top { flex-direction: column; gap: 16px; padding-top: 40px; font-size: 14px; }
@@ -2650,6 +2723,8 @@ html.theme-changing *::after {
   .ba-tag--after { right: 12px; }
   .page-header .btn { padding-left: 14px; font-size: 14px; }
   .page-header-actions .btn { display: none; }
+  .chapter-inner { grid-template-columns: 1fr; gap: 12px; }
+  .chapter-num { font-size: 72px; }
   .page-hero { padding-top: 8px; }
   .page-hero-card { min-height: 440px; }
   .page-hero-intro { font-size: 15px; }
