@@ -721,6 +721,16 @@
     });
   }
 
+  // ---------- Rental steps: tap to reveal the photo on touch screens ----------
+  document.querySelectorAll(".step--media").forEach((step) => {
+    step.addEventListener("click", () => {
+      if (window.matchMedia("(hover: hover)").matches) return;
+      const on = !step.classList.contains("is-touched");
+      document.querySelectorAll(".step--media.is-touched").forEach((s) => s.classList.remove("is-touched"));
+      step.classList.toggle("is-touched", on);
+    });
+  });
+
   // ---------- Light / dark theme switch ----------
   const themeSwitch = document.getElementById("themeSwitch");
   if (themeSwitch) {
