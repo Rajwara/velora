@@ -71,7 +71,7 @@
   document.querySelectorAll(".section-title, .about-lead").forEach(splitWords);
 
   // ---------- Stagger siblings in grids ----------
-  document.querySelectorAll(".stats, .why-grid, .timeline, .posts, .footer-grid").forEach((group) => {
+  document.querySelectorAll(".stats, .why-grid, .timeline, .posts, .footer-right, .footer-menus").forEach((group) => {
     group.querySelectorAll(":scope > .reveal, :scope > .reveal-once").forEach((el, i) => {
       el.style.setProperty("--d", `${i * 0.12}s`);
     });
@@ -239,6 +239,14 @@
     const hide = () => { img.style.visibility = "hidden"; };
     if (img.complete && img.naturalWidth === 0) hide();
     else img.addEventListener("error", hide, { once: true });
+  });
+
+  // ---------- Priority booking form (demo: hook up your own endpoint) ----------
+  const subscribeForm = document.getElementById("subscribeForm");
+  subscribeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    subscribeForm.hidden = true;
+    document.getElementById("subscribeMessage").hidden = false;
   });
 
   // ---------- Footer year ----------
