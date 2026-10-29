@@ -161,7 +161,7 @@ address { font-style: normal; }
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: max(16px, var(--frame)) var(--frame) 0;
+  padding: max(16px, var(--frame)) var(--frame) clamp(40px, 5vw, 72px);
 }
 .hero-card {
   position: relative;
