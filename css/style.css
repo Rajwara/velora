@@ -154,12 +154,12 @@ address { font-style: normal; }
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--frame);
+  padding: max(16px, var(--frame)) var(--frame) 0;
 }
 .hero-card {
   position: relative;
-  height: max(640px, min(100vh, 900px));
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  height: max(640px, min(calc(100vh - 24px), 900px));
+  border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -952,7 +952,7 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
   body { font-size: 14px; }
   .section { padding: 80px 0; }
   .logo { font-size: 26px; }
-  .hero-card { height: max(600px, 92svh); }
+  .hero-card { height: max(600px, calc(100svh - 32px)); }
   .hero-top { flex-direction: column; gap: 16px; padding-top: 40px; font-size: 14px; }
   .hero-note { display: none; }
   .hero-content { padding-bottom: 40px; }
