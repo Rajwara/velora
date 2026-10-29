@@ -428,17 +428,206 @@
     selectMarque(params.get("marque") || "all");
   }
 
-  // ---------- Blog topic filter ----------
-  const blogChips = document.getElementById("blogChips");
-  if (blogChips) {
-    const blogPosts = Array.from(document.querySelectorAll("#blogPosts .post"));
-    setupChips(blogChips, (tag) => {
-      blogPosts.forEach((post) => {
-        const show = tag === "all" || post.dataset.tag === tag;
+  // ---------- Journal: category, tag and search filters ----------
+  const blogPosts = document.getElementById("blogPosts");
+  if (blogPosts) {
+    const posts = Array.from(blogPosts.querySelectorAll(".post"));
+    const featured = document.getElementById("blogFeatured");
+    const search = document.getElementById("blogSearch");
+    const status = document.getElementById("blogStatus");
+    const empty = document.getElementById("blogEmpty");
+    const tagLinks = Array.from(document.querySelectorAll(".tag-cloud .tag-link"));
+    const params = new URLSearchParams(location.search);
+    const state = {
+      category: (params.get("category") || "all").toLowerCase(),
+      tag: (params.get("tag") || "").toLowerCase(),
+      q: params.get("q") || "",
+    };
+    search.value = state.q;
+
+    const escapeHtml = (text) => text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    const apply = (updateUrl) => {
+      const q = state.q.trim().toLowerCase();
+      const filtering = state.category !== "all" || state.tag || q;
+      let count = 0;
+      posts.forEach((post) => {
+        const match = (state.category === "all" || post.dataset.category === state.category)
+          && (!state.tag || post.dataset.tags.split("|").includes(state.tag))
+          && (!q || post.dataset.search.toLowerCase().includes(q));
+        // Without a filter the featured article is shown above the grid instead
+        const show = match && (filtering || !post.hasAttribute("data-featured"));
         post.classList.toggle("is-hidden", !show);
-        if (show) post.classList.add("is-visible");
+        if (show) {
+          count++;
+          post.classList.remove("is-filtered-in");
+          void post.offsetWidth;
+          post.classList.add("is-visible", "is-filtered-in");
+        }
+      });
+      featured.hidden = Boolean(filtering);
+      empty.hidden = count > 0;
+      tagLinks.forEach((link) => link.classList.toggle("is-current", link.dataset.tag === state.tag));
+
+      if (filtering) {
+        const parts = [];
+        if (state.category !== "all") parts.push(`in <strong>${escapeHtml(state.category)}</strong>`);
+        if (state.tag) parts.push(`tagged <strong>#${escapeHtml(state.tag)}</strong>`);
+        if (q) parts.push(`matching <strong>"${escapeHtml(state.q.trim())}"</strong>`);
+        status.innerHTML = `<span>${count} article${count === 1 ? "" : "s"} ${parts.join(", ")}</span> <button type="button" class="link-btn" data-clear-blog>Clear filters</button>`;
+      }
+      status.hidden = !filtering;
+
+      if (updateUrl) {
+        const next = new URLSearchParams();
+        if (state.category !== "all") next.set("category", state.category);
+        if (state.tag) next.set("tag", state.tag);
+        if (q) next.set("q", state.q.trim());
+        history.replaceState(null, "", `${location.pathname}${next.toString() ? `?${next}` : ""}`);
+      }
+    };
+
+    const selectCategory = setupChips(document.getElementById("blogChips"), (value) => { state.category = value; apply(true); });
+    search.closest("form").addEventListener("submit", (e) => { e.preventDefault(); state.q = search.value; apply(true); });
+    search.addEventListener("input", () => { state.q = search.value; apply(true); });
+    tagLinks.forEach((link) => link.addEventListener("click", (e) => {
+      e.preventDefault();
+      state.tag = state.tag === link.dataset.tag ? "" : link.dataset.tag;
+      apply(true);
+      document.getElementById("articles").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    }));
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("[data-clear-blog]")) return;
+      state.tag = ""; state.q = ""; search.value = "";
+      selectCategory("all");
+    });
+
+    // Initial state from the URL (e.g. links from an article's tags)
+    const chip = document.querySelector(`#blogChips .chip[data-filter="${CSS.escape(state.category)}"]`);
+    if (!chip) state.category = "all";
+    selectCategory(state.category);
+    if (state.category !== "all" || state.tag || state.q) {
+      requestAnimationFrame(() => document.getElementById("articles").scrollIntoView());
+    }
+  }
+
+  // ---------- Article: copy link ----------
+  document.querySelectorAll("[data-share]").forEach((button) => {
+    const label = button.firstChild;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        label.textContent = "Link Copied ";
+      } catch (err) {
+        label.textContent = "Copy failed ";
+      }
+      button.classList.add("is-copied");
+      setTimeout(() => { label.textContent = "Copy Link "; button.classList.remove("is-copied"); }, 2000);
+    });
+  });
+
+  // ---------- Packages & plans ----------
+  const planToggle = document.querySelector(".plan-toggle");
+  if (planToggle) {
+    const buttons = Array.from(planToggle.querySelectorAll(".plan-toggle-btn"));
+    const grids = Array.from(document.querySelectorAll("[data-plans]"));
+
+    const countUp = (grid) => {
+      grid.querySelectorAll(".plan-amount").forEach((el) => {
+        const target = Number(el.dataset.amount);
+        if (reduceMotion) { el.textContent = target.toLocaleString("en-US"); return; }
+        const start = performance.now();
+        const tick = (now) => {
+          const t = Math.min((now - start) / 900, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3))).toLocaleString("en-US");
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    };
+
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const show = button.dataset.show;
+      planToggle.dataset.active = show;
+      buttons.forEach((b) => {
+        b.classList.toggle("is-active", b === button);
+        b.setAttribute("aria-selected", String(b === button));
+      });
+      grids.forEach((grid) => {
+        grid.hidden = grid.dataset.plans !== show;
+        if (!grid.hidden) countUp(grid);
+      });
+    }));
+
+    // Count the visible prices up the first time the section is seen
+    if ("IntersectionObserver" in window) {
+      const po = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        po.disconnect();
+        countUp(grids.find((g) => !g.hidden));
+      }, { threshold: 0.3 });
+      po.observe(document.querySelector(".plan-panels"));
+    }
+
+    // Spotlight follows the cursor
+    document.querySelectorAll(".plan-card").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        card.style.setProperty("--my", `${e.clientY - r.top}px`);
       });
     });
+  }
+
+  // ---------- Road trips carousel ----------
+  const tripsTrack = document.getElementById("tripsTrack");
+  if (tripsTrack) {
+    const bar = document.getElementById("tripsBar");
+    const step = () => (tripsTrack.querySelector(".trip-card").offsetWidth + 24);
+    const updateBar = () => {
+      const max = tripsTrack.scrollWidth - tripsTrack.clientWidth;
+      const visible = tripsTrack.clientWidth / tripsTrack.scrollWidth;
+      const p = max > 0 ? visible + (1 - visible) * (tripsTrack.scrollLeft / max) : 1;
+      bar.style.setProperty("--p", p.toFixed(3));
+    };
+    tripsTrack.addEventListener("scroll", updateBar, { passive: true });
+    window.addEventListener("resize", updateBar);
+    updateBar();
+
+    const scrollByCards = (dir) => tripsTrack.scrollBy({ left: dir * step(), behavior: reduceMotion ? "auto" : "smooth" });
+    document.querySelector(".trips-prev").addEventListener("click", () => scrollByCards(-1));
+    document.querySelector(".trips-next").addEventListener("click", () => scrollByCards(1));
+    tripsTrack.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); scrollByCards(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); scrollByCards(-1); }
+    });
+
+    // Drag to scroll with a mouse (touch devices scroll natively)
+    let startX = 0;
+    let startScroll = 0;
+    let dragging = false;
+    tripsTrack.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") return;
+      dragging = true;
+      startX = e.clientX;
+      startScroll = tripsTrack.scrollLeft;
+      tripsTrack.setPointerCapture(e.pointerId);
+    });
+    tripsTrack.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) tripsTrack.classList.add("is-dragging");
+      tripsTrack.scrollLeft = startScroll - dx;
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      tripsTrack.classList.remove("is-dragging");
+      // Settle on the nearest card
+      tripsTrack.scrollTo({ left: Math.round(tripsTrack.scrollLeft / step()) * step(), behavior: "smooth" });
+    };
+    tripsTrack.addEventListener("pointerup", endDrag);
+    tripsTrack.addEventListener("pointercancel", endDrag);
   }
 
   // ---------- Contact form ----------

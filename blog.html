@@ -109,7 +109,7 @@
     </section>
 
     <!-- ================= FEATURED ================= -->
-    <section class="section blog">
+    <section class="section blog" id="blogFeatured">
       <div class="container">
         <a href="post-autobahn-guide.html" class="post-featured reveal-once">
           <div class="post-media"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="post-tag">Driving</span></div>
@@ -125,18 +125,47 @@
     </section>
 
     <!-- ================= ALL POSTS ================= -->
-    <section class="section blog" style="padding-top: 0">
+    <section class="section blog blog-list" id="articles">
       <div class="container">
-        <div class="fleet-toolbar reveal">
-          <div class="chips" role="group" aria-label="Filter by topic" id="blogChips">
-          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="chip" type="button" data-filter="care" aria-pressed="false">Care</button>
-          <button class="chip" type="button" data-filter="driving" aria-pressed="false">Driving</button>
-          <button class="chip" type="button" data-filter="ownership" aria-pressed="false">Ownership</button>
+        <div class="blog-toolbar glass-panel reveal">
+          <div class="chips" role="group" aria-label="Filter by category" id="blogChips">
+            <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="chip" type="button" data-filter="care" aria-pressed="false">Care</button>
+            <button class="chip" type="button" data-filter="driving" aria-pressed="false">Driving</button>
+            <button class="chip" type="button" data-filter="ownership" aria-pressed="false">Ownership</button>
           </div>
+          <form class="glass-search" role="search" action="blog.html" method="get">
+            <svg class="icon-sm"><use href="#i-search"/></svg>
+            <input type="search" name="q" id="blogSearch" placeholder="Search the journal..." aria-label="Search the journal" autocomplete="off">
+            <button type="submit" class="glass-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-arrow"/></svg></button>
+          </form>
         </div>
+        <div class="tag-cloud reveal" aria-label="Tags">
+            <a href="blog.html?tag=Autobahn" class="tag-link" data-tag="autobahn">#Autobahn</a>
+            <a href="blog.html?tag=HU/AU" class="tag-link" data-tag="hu/au">#HU/AU</a>
+            <a href="blog.html?tag=Inspection" class="tag-link" data-tag="inspection">#Inspection</a>
+            <a href="blog.html?tag=Rental" class="tag-link" data-tag="rental">#Rental</a>
+            <a href="blog.html?tag=Road%20rules" class="tag-link" data-tag="road rules">#Road rules</a>
+            <a href="blog.html?tag=Safety" class="tag-link" data-tag="safety">#Safety</a>
+            <a href="blog.html?tag=Servicing" class="tag-link" data-tag="servicing">#Servicing</a>
+            <a href="blog.html?tag=Tyres" class="tag-link" data-tag="tyres">#Tyres</a>
+            <a href="blog.html?tag=T%C3%9CV" class="tag-link" data-tag="tüv">#TÜV</a>
+            <a href="blog.html?tag=Warranty" class="tag-link" data-tag="warranty">#Warranty</a>
+            <a href="blog.html?tag=Winter" class="tag-link" data-tag="winter">#Winter</a>
+        </div>
+        <p class="blog-status" id="blogStatus" role="status" hidden></p>
         <div class="posts" id="blogPosts">
-          <a href="post-winter-tyres.html" class="post reveal-once" data-tag="care">
+          <a href="post-autobahn-guide.html" class="post reveal-once" data-category="driving" data-tags="autobahn|rental|road rules|safety" data-search="Driving the Autobahn: 8 Rules Every Visitor Should Know No general speed limit doesn't mean no rules. Here's how to drive Germany's motorways safely and confidently in a rental. Driving Autobahn Rental Road rules Safety" data-featured>
+            <div class="post-media">
+              <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+              <span class="post-tag">Driving</span>
+            </div>
+            <p class="post-meta">12 Oct 2026 · 6 min read</p>
+            <h3>Driving the Autobahn: 8 Rules Every Visitor Should Know</h3>
+            <p class="muted post-excerpt">No general speed limit doesn't mean no rules. Here's how to drive Germany's motorways safely and confidently in a rental.</p>
+            <ul class="post-tags"><li>#Autobahn</li><li>#Rental</li><li>#Road rules</li><li>#Safety</li></ul>
+          </a>
+          <a href="post-winter-tyres.html" class="post reveal-once" data-category="care" data-tags="tyres|winter|road rules|safety" data-search="Winter Tyres in Germany: What the Law Actually Says Germany's winter tyre rule is situational. We explain the alpine symbol, the 'O to O' rule of thumb and what it means for your car. Care Tyres Winter Road rules Safety">
             <div class="post-media">
               <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
               <span class="post-tag">Care</span>
@@ -144,8 +173,9 @@
             <p class="post-meta">28 Sep 2026 · 5 min read</p>
             <h3>Winter Tyres in Germany: What the Law Actually Says</h3>
             <p class="muted post-excerpt">Germany's winter tyre rule is situational. We explain the alpine symbol, the 'O to O' rule of thumb and what it means for your car.</p>
+            <ul class="post-tags"><li>#Tyres</li><li>#Winter</li><li>#Road rules</li><li>#Safety</li></ul>
           </a>
-          <a href="post-hu-au-explained.html" class="post reveal-once" data-tag="care">
+          <a href="post-hu-au-explained.html" class="post reveal-once" data-category="care" data-tags="hu/au|tüv|inspection" data-search="HU/AU Explained: Getting Your Car Through Its Inspection What the general inspection and emissions test check, how often you need them and how to avoid a re-test. Care HU/AU TÜV Inspection">
             <div class="post-media">
               <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
               <span class="post-tag">Care</span>
@@ -153,8 +183,9 @@
             <p class="post-meta">09 Sep 2026 · 5 min read</p>
             <h3>HU/AU Explained: Getting Your Car Through Its Inspection</h3>
             <p class="muted post-excerpt">What the general inspection and emissions test check, how often you need them and how to avoid a re-test.</p>
+            <ul class="post-tags"><li>#HU/AU</li><li>#TÜV</li><li>#Inspection</li></ul>
           </a>
-          <a href="post-independent-servicing.html" class="post reveal-once" data-tag="ownership">
+          <a href="post-independent-servicing.html" class="post reveal-once" data-category="ownership" data-tags="warranty|servicing|inspection" data-search="Can an Independent Specialist Service My Car Under Warranty? Yes, in the EU you can. Here's what makes a service warranty-safe and what to look for in a specialist. Ownership Warranty Servicing Inspection">
             <div class="post-media">
               <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
               <span class="post-tag">Ownership</span>
@@ -162,8 +193,10 @@
             <p class="post-meta">21 Aug 2026 · 4 min read</p>
             <h3>Can an Independent Specialist Service My Car Under Warranty?</h3>
             <p class="muted post-excerpt">Yes, in the EU you can. Here's what makes a service warranty-safe and what to look for in a specialist.</p>
+            <ul class="post-tags"><li>#Warranty</li><li>#Servicing</li><li>#Inspection</li></ul>
           </a>
         </div>
+        <p class="fleet-empty muted" id="blogEmpty" hidden>No articles match. Try another word or <button type="button" class="link-btn" data-clear-blog>show all articles</button>.</p>
       </div>
     </section>
   </main>

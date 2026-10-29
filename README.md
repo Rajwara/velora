@@ -14,12 +14,12 @@ python3 -m http.server 8000
 
 | File | Page |
 |---|---|
-| `index.html` | Home |
+| `index.html` | Home, including rental packages / care plans toggle, pick-up & delivery map and road-trip carousel |
 | `about.html` | About: story, values, milestones, team |
-| `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements |
+| `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements, delivery map |
 | `services.html` | Care services gallery and price list |
-| `blog.html` | Journal index with topic filter |
-| `post-*.html` | Articles (Autobahn, winter tyres, HU/AU, warranty-safe servicing) |
+| `blog.html` | Journal with category, tag and search filters (`?category=care`, `?tag=winter`, `?q=tüv`) |
+| `post-*.html` | Articles with a glass sidebar (search, categories, tags, recent posts), tags and copy-link |
 | `contact.html` | Enquiry form (prefill with `?car=`, `?service=`, `?topic=`), hours, consent-based map |
 | `faq.html` | FAQ accordion |
 | `impressum.html`, `privacy.html`, `terms.html` | Legal pages (placeholders) |
