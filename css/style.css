@@ -1492,6 +1492,8 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
   background: var(--surface);
   border-top: 1px solid var(--border);
 }
+.footer-cta { margin-bottom: clamp(56px, 7vw, 96px); }
+.footer-cta .eyebrow { margin-bottom: 14px; }
 .footer-grid {
   display: grid;
   grid-template-columns: 2.5fr 2.7fr;
