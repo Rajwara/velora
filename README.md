@@ -18,6 +18,7 @@ python3 -m http.server 8000
 | `about.html` | About: story, values, milestones, team |
 | `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements, delivery map |
 | `services.html` | Care services gallery and price list |
+| `service-inspection.html`, `service-diagnostics.html`, `service-hu-au.html`, `service-tyres.html`, `service-detailing.html` | One page per care service: overview with quick facts, what's included, step-by-step process, prices, FAQs, related services and booking |
 | `blog.html` | Journal with category, tag and search filters (`?category=care`, `?tag=winter`, `?q=tüv`) |
 | `post-*.html` | Articles with a glass sidebar (search, categories, tags, recent posts), tags and copy-link |
 | `contact.html` | Enquiry form (prefill with `?car=`, `?service=`, `?topic=`), hours, consent-based map |
