@@ -31,6 +31,7 @@ Homepage service tabs can be opened directly with `index.html#service-pane-N` (1
 ## Styling
 
 - `css/style.css`: brand colours and fonts are CSS variables at the top of the file:
+  - **Light theme**: a floating switch (bottom right, every page) toggles `data-theme="light"` on `<html>`: warm cream background, raised cards and orange `#f26a1b` accent. The choice is saved in the visitor's browser. Image banners stay dark in both themes so text over photos stays readable.
   - `--primary: #d4d414`, `--white: #ffffff`, `--dark: #080904`
   - Headings and body text use `Figtree, sans-serif`
   - Layout is capped at `--max-width: 1440px`

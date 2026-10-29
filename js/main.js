@@ -721,6 +721,57 @@
     });
   }
 
+  // ---------- Light / dark theme switch ----------
+  const themeSwitch = document.getElementById("themeSwitch");
+  if (themeSwitch) {
+    const root = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const label = themeSwitch.querySelector(".theme-switch-label");
+
+    const sync = () => {
+      const light = root.dataset.theme === "light";
+      themeSwitch.setAttribute("aria-pressed", String(light));
+      themeSwitch.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+      label.textContent = light ? "Dark mode" : "Light mode";
+      if (themeMeta) themeMeta.content = light ? "#f6ece1" : "#080904";
+    };
+
+    const apply = (light) => {
+      if (light) root.dataset.theme = "light";
+      else delete root.dataset.theme;
+      try { localStorage.setItem("velora-theme", light ? "light" : "dark"); } catch (e) { /* storage blocked */ }
+      sync();
+    };
+
+    themeSwitch.addEventListener("click", () => {
+      const light = root.dataset.theme !== "light";
+      if (reduceMotion) { apply(light); return; }
+
+      // Circular reveal from the button where the View Transitions API exists
+      if (document.startViewTransition) {
+        const r = themeSwitch.getBoundingClientRect();
+        const x = r.left + r.width / 2;
+        const y = r.top + r.height / 2;
+        const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+        const transition = document.startViewTransition(() => apply(light));
+        transition.ready.then(() => {
+          root.animate(
+            { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+            { duration: 700, easing: "cubic-bezier(0.22, 1, 0.36, 1)", pseudoElement: "::view-transition-new(root)" }
+          );
+        }).catch(() => {});
+        return;
+      }
+
+      // Fallback: a short colour cross-fade
+      root.classList.add("theme-changing");
+      apply(light);
+      setTimeout(() => root.classList.remove("theme-changing"), 550);
+    });
+
+    sync();
+  }
+
   // ---------- Footer year ----------
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
