@@ -6,45 +6,67 @@
 
   // ---------- Drawer menu ----------
   // (Each block checks its elements exist, so this file works on every page.)
-  const toggle = document.getElementById("menuToggle");
+  const toggles = Array.from(document.querySelectorAll("[data-menu-toggle]"));
   const drawer = document.getElementById("drawer");
 
   function setMenu(open) {
     if (!drawer) return;
     body.classList.toggle("nav-open", open);
     body.classList.toggle("no-scroll", open);
-    toggle.setAttribute("aria-expanded", String(open));
+    toggles.forEach((t) => t.setAttribute("aria-expanded", String(open)));
   }
 
-  if (toggle && drawer) {
-    toggle.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
+  if (drawer) {
+    toggles.forEach((t) => t.addEventListener("click", () => setMenu(!body.classList.contains("nav-open"))));
     document.getElementById("drawerBackdrop").addEventListener("click", () => setMenu(false));
     document.getElementById("drawerClose").addEventListener("click", () => setMenu(false));
     drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
   }
 
-  // ---------- Models dropdown ----------
-  const dropdown = document.querySelector(".dropdown");
-  const dropdownBtn = dropdown && dropdown.querySelector("button");
+  // ---------- Header dropdowns (Fleet, Services): hover on desktop, caret button for touch/keyboard ----------
+  const dropdowns = Array.from(document.querySelectorAll(".site-header .dropdown"));
 
-  function setDropdown(open) {
-    if (!dropdown) return;
-    dropdown.classList.toggle("is-open", open);
-    dropdownBtn.setAttribute("aria-expanded", String(open));
-  }
-
-  if (dropdown) {
-    dropdownBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      setDropdown(!dropdown.classList.contains("is-open"));
+  function closeDropdowns(except) {
+    dropdowns.forEach((d) => {
+      if (d === except) return;
+      d.classList.remove("is-open");
+      d.querySelector(".nav-caret").setAttribute("aria-expanded", "false");
     });
-    document.addEventListener("click", () => setDropdown(false));
   }
+
+  dropdowns.forEach((d) => {
+    const caret = d.querySelector(".nav-caret");
+    caret.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = !d.classList.contains("is-open");
+      closeDropdowns(d);
+      d.classList.toggle("is-open", open);
+      caret.setAttribute("aria-expanded", String(open));
+    });
+  });
+  document.addEventListener("click", () => closeDropdowns());
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     setMenu(false);
-    setDropdown(false);
+    closeDropdowns();
   });
+
+  // ---------- Floating header: appears once the banner has scrolled away ----------
+  const floatHeader = document.getElementById("floatHeader");
+  const heroCard = document.querySelector(".hero-card");
+  if (floatHeader && heroCard) {
+    let shown = false;
+    const update = () => {
+      const show = heroCard.getBoundingClientRect().bottom < 80;
+      if (show === shown) return;
+      shown = show;
+      floatHeader.classList.toggle("is-visible", show);
+      floatHeader.inert = !show;
+      if (!show) closeDropdowns();
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
 
   // ---------- Split headings into words ----------
   function splitWords(el) {

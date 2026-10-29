@@ -55,27 +55,19 @@
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   </svg>
-  <!-- ================= HEADER ================= -->
-  <header class="page-header" id="top">
-    <div class="container page-header-inner">
-      <a href="index.html" class="logo">Velora</a>
-      <nav aria-label="Primary">
-        <ul class="page-nav">
-          <li><a href="about.html">About</a></li>
-          <li><a href="fleet.html">Fleet</a></li>
-          <li><a href="services.html" class="is-current" aria-current="page">Services</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="page-header-actions">
-        <a href="contact.html" class="btn btn-primary" data-magnetic>Book Now <span class="btn-icon"><svg class="icon-sm"><use href="#i-arrow"/></svg></span></a>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      </div>
-    </div>
-  </header>
+  <header class="site-header float-header" id="floatHeader" inert>
+          <a href="index.html" class="logo">Velora</a>
+          <div class="header-right">
+            <nav class="nav-pill" aria-label="Sticky">
+              <ul class="nav-links"><li><a href="about.html" class="nav-link">About</a></li><li class="dropdown"><a href="fleet.html" class="nav-link">Fleet</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Fleet menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="fleet.html?marque=porsche">Porsche</a></li><li><a href="fleet.html?marque=bmw">BMW M</a></li><li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li><li><a href="fleet.html?marque=audi">Audi Sport</a></li><li><a href="fleet.html">View full fleet</a></li></ul></li><li class="dropdown"><a href="services.html" class="nav-link is-current" aria-current="page">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Services menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="service-inspection.html">Inspection &amp; Oil Service</a></li><li><a href="service-diagnostics.html">Diagnostics &amp; Repairs</a></li><li><a href="service-hu-au.html">HU/AU Preparation</a></li><li><a href="service-tyres.html">Tyre Service &amp; Storage</a></li><li><a href="service-detailing.html">Detailing &amp; Ceramic Coating</a></li><li><a href="services.html">All services</a></li></ul></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+              <form class="nav-search" role="search" action="fleet.html" method="get">
+                <input type="search" name="q" placeholder="Search the fleet..." aria-label="Search the fleet">
+                <button type="submit" class="nav-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-search"/></svg></button>
+              </form>
+            </nav>
+            <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </header>
 
     <!-- Slide-out menu -->
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -96,21 +88,44 @@
       </div>
     </nav>
 
-  <main>
+  <main id="top">
 
-    <!-- ================= PAGE HERO ================= -->
-    <section class="page-hero">
-      <div class="page-hero-card">
+    <!-- ================= BANNER ================= -->
+    <section class="hero hero--page">
+      <div class="hero-card">
         <div class="hero-media"><img class="hero-bg" src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=2400&q=80" alt="Performance tyre and alloy wheel"></div>
         <div class="hero-overlay"></div>
-        <div class="page-hero-content">
-          <nav class="breadcrumb anim" style="--d: .2s" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <a href="services.html">Services</a> <span aria-hidden="true">/</span> <span aria-current="page">Tyre Service & Storage</span></nav>
-          <span class="eyebrow anim" style="--d: .3s">Tyre Service & Storage</span>
-          <h1 class="hero-title page-hero-title">
-            <span class="line"><span style="--d: 0.35s">The Right Tyres</span></span>
-            <span class="line"><span style="--d: 0.47s">for Every Season</span></span>
+
+        <header class="site-header">
+          <a href="index.html" class="logo">Velora</a>
+          <div class="header-right">
+            <nav class="nav-pill" aria-label="Primary">
+              <ul class="nav-links"><li><a href="about.html" class="nav-link">About</a></li><li class="dropdown"><a href="fleet.html" class="nav-link">Fleet</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Fleet menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="fleet.html?marque=porsche">Porsche</a></li><li><a href="fleet.html?marque=bmw">BMW M</a></li><li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li><li><a href="fleet.html?marque=audi">Audi Sport</a></li><li><a href="fleet.html">View full fleet</a></li></ul></li><li class="dropdown"><a href="services.html" class="nav-link is-current" aria-current="page">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Services menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="service-inspection.html">Inspection &amp; Oil Service</a></li><li><a href="service-diagnostics.html">Diagnostics &amp; Repairs</a></li><li><a href="service-hu-au.html">HU/AU Preparation</a></li><li><a href="service-tyres.html">Tyre Service &amp; Storage</a></li><li><a href="service-detailing.html">Detailing &amp; Ceramic Coating</a></li><li><a href="services.html">All services</a></li></ul></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+              <form class="nav-search" role="search" action="fleet.html" method="get">
+                <input type="search" name="q" placeholder="Search the fleet..." aria-label="Search the fleet">
+                <button type="submit" class="nav-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-search"/></svg></button>
+              </form>
+            </nav>
+            <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </header>
+
+        <div class="hero-top">
+          <nav class="hero-loc hero-crumbs anim" style="--d: .5s" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="hero-loc-line" aria-hidden="true"></span><a href="services.html">Services</a><span class="hero-loc-line" aria-hidden="true"></span><span aria-current="page">Tyre Service & Storage</span></nav>
+          <p class="hero-note anim" style="--d: .6s">Seasonal wheel changes, balancing, alignment and climate-controlled storage for German performance cars up to 23 inches.</p>
+        </div>
+
+        <div class="hero-content">
+          <span class="eyebrow anim" style="--d: .7s">Tyre Service & Storage</span>
+          <h1 class="hero-title">
+            <span class="line"><span style="--d: 0.80s">The Right Tyres</span></span>
+            <span class="line"><span style="--d: 0.95s">for Every Season</span></span>
           </h1>
-          <p class="page-hero-intro anim" style="--d: .6s">Seasonal wheel changes, balancing, alignment and climate-controlled storage for German performance cars up to 23 inches.</p>
+        </div>
+
+        <div class="hero-actions anim anim-up" style="--d: 1.1s">
+          <a href="contact.html?service=tyres" class="hero-action">Book This Service <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="#prices" class="hero-action">See Prices <svg class="icon"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -205,7 +220,7 @@
     </div>
 
     <!-- ================= PRICES ================= -->
-    <section class="section">
+    <section class="section" id="prices">
       <div class="container prices">
         <div class="prices-intro">
           <span class="eyebrow reveal">Prices</span>

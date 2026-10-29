@@ -55,68 +55,19 @@
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   </svg>
-
-  <!-- ================= HEADER + HERO ================= -->
-  <main id="top">
-    <section class="hero">
-      <div class="hero-card">
-        <div class="hero-media">
-          <img class="hero-bg" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80" alt="Black German sports car in a studio">
-        </div>
-        <div class="hero-overlay"></div>
-
-        <header class="site-header">
+  <header class="site-header float-header" id="floatHeader" inert>
           <a href="index.html" class="logo">Velora</a>
-
           <div class="header-right">
-            <div class="nav-pill">
-              <div class="dropdown">
-                <button class="nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
-                  Fleet <svg class="icon-sm"><use href="#i-chevron"/></svg>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="fleet.html?marque=porsche">Porsche</a></li>
-                  <li><a href="fleet.html?marque=bmw">BMW M</a></li>
-                  <li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li>
-                  <li><a href="fleet.html?marque=audi">Audi Sport</a></li>
-                  <li><a href="fleet.html">View full fleet</a></li>
-                </ul>
-              </div>
+            <nav class="nav-pill" aria-label="Sticky">
+              <ul class="nav-links"><li><a href="about.html" class="nav-link">About</a></li><li class="dropdown"><a href="fleet.html" class="nav-link">Fleet</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Fleet menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="fleet.html?marque=porsche">Porsche</a></li><li><a href="fleet.html?marque=bmw">BMW M</a></li><li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li><li><a href="fleet.html?marque=audi">Audi Sport</a></li><li><a href="fleet.html">View full fleet</a></li></ul></li><li class="dropdown"><a href="services.html" class="nav-link">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Services menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="service-inspection.html">Inspection &amp; Oil Service</a></li><li><a href="service-diagnostics.html">Diagnostics &amp; Repairs</a></li><li><a href="service-hu-au.html">HU/AU Preparation</a></li><li><a href="service-tyres.html">Tyre Service &amp; Storage</a></li><li><a href="service-detailing.html">Detailing &amp; Ceramic Coating</a></li><li><a href="services.html">All services</a></li></ul></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
               <form class="nav-search" role="search" action="fleet.html" method="get">
                 <input type="search" name="q" placeholder="Search the fleet..." aria-label="Search the fleet">
                 <button type="submit" class="nav-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-search"/></svg></button>
               </form>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+            </nav>
+            <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
           </div>
         </header>
-
-        <div class="hero-top">
-          <div class="hero-loc anim" style="--d: .5s">
-            <span>München, Germany</span>
-            <span class="hero-loc-line"></span>
-            <span>German Engineering<br>by Velora</span>
-          </div>
-          <p class="hero-note anim" style="--d: .6s">Porsche, BMW M, Mercedes-AMG and Audi Sport.<br>Rented, serviced and detailed by specialists.</p>
-        </div>
-
-        <div class="hero-content">
-          <span class="eyebrow anim" style="--d: .7s">Rental &amp; Care</span>
-          <h1 class="hero-title">
-            <span class="line"><span style="--d: .8s">Drive German Precision,</span></span>
-            <span class="line"><span style="--d: .95s">Your Way</span></span>
-          </h1>
-        </div>
-
-        <div class="hero-actions anim anim-up" style="--d: 1.1s">
-          <a href="fleet.html" class="hero-action">Rent a Car <svg class="icon"><use href="#i-arrow"/></svg></a>
-          <a href="services.html" class="hero-action">Book a Service <svg class="icon"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
-    </section>
 
     <!-- Slide-out menu -->
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -136,6 +87,49 @@
         <span>Leopoldstraße 112, 80802 München</span>
       </div>
     </nav>
+
+  <main id="top">
+
+
+    <!-- ================= BANNER ================= -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-media"><img class="hero-bg" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80" alt="Black German sports car in a studio"></div>
+        <div class="hero-overlay"></div>
+
+        <header class="site-header">
+          <a href="index.html" class="logo">Velora</a>
+          <div class="header-right">
+            <nav class="nav-pill" aria-label="Primary">
+              <ul class="nav-links"><li><a href="about.html" class="nav-link">About</a></li><li class="dropdown"><a href="fleet.html" class="nav-link">Fleet</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Fleet menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="fleet.html?marque=porsche">Porsche</a></li><li><a href="fleet.html?marque=bmw">BMW M</a></li><li><a href="fleet.html?marque=mercedes">Mercedes-AMG</a></li><li><a href="fleet.html?marque=audi">Audi Sport</a></li><li><a href="fleet.html">View full fleet</a></li></ul></li><li class="dropdown"><a href="services.html" class="nav-link">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-label="Show Services menu"><svg class="icon-sm"><use href="#i-chevron"/></svg></button><ul class="dropdown-menu"><li><a href="service-inspection.html">Inspection &amp; Oil Service</a></li><li><a href="service-diagnostics.html">Diagnostics &amp; Repairs</a></li><li><a href="service-hu-au.html">HU/AU Preparation</a></li><li><a href="service-tyres.html">Tyre Service &amp; Storage</a></li><li><a href="service-detailing.html">Detailing &amp; Ceramic Coating</a></li><li><a href="services.html">All services</a></li></ul></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+              <form class="nav-search" role="search" action="fleet.html" method="get">
+                <input type="search" name="q" placeholder="Search the fleet..." aria-label="Search the fleet">
+                <button type="submit" class="nav-search-btn" aria-label="Search"><svg class="icon-sm"><use href="#i-search"/></svg></button>
+              </form>
+            </nav>
+            <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </header>
+
+        <div class="hero-top">
+          <div class="hero-loc anim" style="--d: .5s"><span>München, Germany</span><span class="hero-loc-line"></span><span>German Engineering<br>by Velora</span></div>
+          <p class="hero-note anim" style="--d: .6s">Porsche, BMW M, Mercedes-AMG and Audi Sport.<br>Rented, serviced and detailed by specialists.</p>
+        </div>
+
+        <div class="hero-content">
+          <span class="eyebrow anim" style="--d: .7s">Rental &amp; Care</span>
+          <h1 class="hero-title">
+            <span class="line"><span style="--d: 0.80s">Drive German Precision,</span></span>
+            <span class="line"><span style="--d: 0.95s">Your Way</span></span>
+          </h1>
+        </div>
+
+        <div class="hero-actions anim anim-up" style="--d: 1.1s">
+          <a href="fleet.html" class="hero-action">Rent a Car <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="services.html" class="hero-action">Book a Service <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
 
 
     <div class="marquee " aria-label="Porsche, BMW M, Mercedes-AMG, Audi Sport, Volkswagen, Mercedes-Benz, BMW, Audi, MINI">
@@ -899,6 +893,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- ================= FOOTER ================= -->

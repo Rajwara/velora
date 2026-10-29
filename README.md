@@ -31,6 +31,8 @@ Homepage service tabs can be opened directly with `index.html#service-pane-N` (1
 
 ## Styling
 
+- **One header and banner on every page**: each page opens with the same banner as the homepage (header inside the card, breadcrumb and intro along the top, eyebrow and headline, two-button action bar). The header has About, Fleet and Services (with dropdowns), Blog, Contact, fleet search and the menu button; the same header floats at the top once the banner scrolls away.
+
 - `css/style.css`: brand colours and fonts are CSS variables at the top of the file:
   - **Light theme**: a floating switch (bottom right, every page) toggles `data-theme="light"` on `<html>`: warm cream background with slowly drifting warm light, frosted-glass cards, header, chips, icons and footer, and an orange `#f26a1b` accent. The choice is saved in the visitor's browser. The homepage banner turns light (cream fade over the photo, white-glass header controls); the other photo banners stay dark in both themes so text over photos stays readable.
   - `--primary: #d4d414`, `--white: #ffffff`, `--dark: #080904`
