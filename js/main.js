@@ -5,34 +5,41 @@
   const body = document.body;
 
   // ---------- Drawer menu ----------
+  // (Each block checks its elements exist, so this file works on every page.)
   const toggle = document.getElementById("menuToggle");
-  const backdrop = document.getElementById("drawerBackdrop");
+  const drawer = document.getElementById("drawer");
 
   function setMenu(open) {
+    if (!drawer) return;
     body.classList.toggle("nav-open", open);
     body.classList.toggle("no-scroll", open);
     toggle.setAttribute("aria-expanded", String(open));
   }
 
-  toggle.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
-  backdrop.addEventListener("click", () => setMenu(false));
-  document.getElementById("drawerClose").addEventListener("click", () => setMenu(false));
-  document.querySelectorAll(".drawer a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  if (toggle && drawer) {
+    toggle.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
+    document.getElementById("drawerBackdrop").addEventListener("click", () => setMenu(false));
+    document.getElementById("drawerClose").addEventListener("click", () => setMenu(false));
+    drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  }
 
   // ---------- Models dropdown ----------
   const dropdown = document.querySelector(".dropdown");
-  const dropdownBtn = dropdown.querySelector("button");
+  const dropdownBtn = dropdown && dropdown.querySelector("button");
 
   function setDropdown(open) {
+    if (!dropdown) return;
     dropdown.classList.toggle("is-open", open);
     dropdownBtn.setAttribute("aria-expanded", String(open));
   }
 
-  dropdownBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    setDropdown(!dropdown.classList.contains("is-open"));
-  });
-  document.addEventListener("click", () => setDropdown(false));
+  if (dropdown) {
+    dropdownBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setDropdown(!dropdown.classList.contains("is-open"));
+    });
+    document.addEventListener("click", () => setDropdown(false));
+  }
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     setMenu(false);
@@ -141,6 +148,84 @@
     });
   }
 
+  // ---------- Before & after slider ----------
+  const baSlider = document.getElementById("baSlider");
+  if (baSlider) {
+    // Replace with your own before/after photo pairs
+    const PAIRS = [
+      { before: "https://images.pexels.com/photos/6872162/pexels-photo-6872162.jpeg?auto=compress&w=1600",
+        after: "https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&w=1600" },
+      { before: "https://images.pexels.com/photos/6873088/pexels-photo-6873088.jpeg?auto=compress&w=1600",
+        after: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&w=1600" },
+    ];
+    const beforeImg = baSlider.querySelector(".ba-before");
+    const afterImg = baSlider.querySelector(".ba-after");
+    const handle = baSlider.querySelector(".ba-handle");
+    let pos = 50;
+    let pair = 0;
+    let dragging = false;
+
+    const setPos = (pct) => {
+      pos = Math.max(0, Math.min(100, pct));
+      baSlider.style.setProperty("--pos", `${pos}%`);
+      handle.setAttribute("aria-valuenow", String(Math.round(pos)));
+    };
+    const fromPointer = (e) => {
+      const r = baSlider.getBoundingClientRect();
+      setPos(((e.clientX - r.left) / r.width) * 100);
+    };
+    // Glide the divider to a position (used for the intro hint and pair changes)
+    const glideTo = (pct, done) => {
+      if (reduceMotion) { setPos(pct); if (done) done(); return; }
+      baSlider.classList.add("is-animating");
+      setPos(pct);
+      setTimeout(() => { baSlider.classList.remove("is-animating"); if (done) done(); }, 800);
+    };
+
+    baSlider.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      baSlider.classList.remove("is-animating");
+      baSlider.classList.add("is-dragging");
+      baSlider.setPointerCapture(e.pointerId);
+      fromPointer(e);
+    });
+    baSlider.addEventListener("pointermove", (e) => { if (dragging) fromPointer(e); });
+    ["pointerup", "pointercancel"].forEach((type) => baSlider.addEventListener(type, () => {
+      dragging = false;
+      baSlider.classList.remove("is-dragging");
+    }));
+
+    handle.addEventListener("keydown", (e) => {
+      const steps = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5 };
+      if (e.key in steps) { e.preventDefault(); setPos(pos + steps[e.key]); }
+      else if (e.key === "Home") { e.preventDefault(); setPos(0); }
+      else if (e.key === "End") { e.preventDefault(); setPos(100); }
+    });
+
+    const loadPair = (i) => {
+      pair = (i + PAIRS.length) % PAIRS.length;
+      baSlider.classList.add("is-fading");
+      setTimeout(() => {
+        beforeImg.src = PAIRS[pair].before;
+        afterImg.src = PAIRS[pair].after;
+        setPos(50);
+        baSlider.classList.remove("is-fading");
+      }, reduceMotion ? 0 : 300);
+    };
+    document.querySelector(".ba-prev").addEventListener("click", () => loadPair(pair - 1));
+    document.querySelector(".ba-next").addEventListener("click", () => loadPair(pair + 1));
+
+    // First time the slider is seen, sweep the divider to show it can be dragged
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const hint = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        hint.disconnect();
+        setTimeout(() => glideTo(25, () => glideTo(75, () => glideTo(50))), 600);
+      }, { threshold: 0.6 });
+      hint.observe(baSlider);
+    }
+  }
+
   // ---------- Reveal on scroll ----------
   const revealEls = document.querySelectorAll(".reveal, .reveal-once, .split");
   if ("IntersectionObserver" in window && !reduceMotion) {
@@ -189,7 +274,7 @@
   const heroMedia = document.querySelector(".hero-media");
   const cards = Array.from(document.querySelectorAll(".model-card"));
   const timeline = document.getElementById("timeline");
-  const steps = Array.from(timeline.querySelectorAll(".step"));
+  const steps = timeline ? Array.from(timeline.querySelectorAll(".step")) : [];
   const progressBar = document.querySelector(".scroll-progress");
   const toTop = document.getElementById("toTop");
   let ticking = false;
@@ -204,7 +289,7 @@
 
     if (!reduceMotion) {
       // Hero parallax
-      if (y < vh * 1.2) heroMedia.style.transform = `translateY(${y * 0.3}px)`;
+      if (heroMedia && y < vh * 1.2) heroMedia.style.transform = `translateY(${y * 0.3}px)`;
 
       // Stacked cards shrink and dim as the next one slides over
       cards.forEach((card, i) => {
@@ -217,11 +302,13 @@
     }
 
     // Timeline progress line + active steps
-    const rect = timeline.getBoundingClientRect();
-    const line = vh * 0.6;
-    const progress = Math.min(Math.max((line - rect.top) / rect.height, 0), 1);
-    timeline.style.setProperty("--progress", `${progress * 100}%`);
-    steps.forEach((step) => step.classList.toggle("is-active", step.getBoundingClientRect().top + 40 < line));
+    if (timeline) {
+      const rect = timeline.getBoundingClientRect();
+      const line = vh * 0.6;
+      const progress = Math.min(Math.max((line - rect.top) / rect.height, 0), 1);
+      timeline.style.setProperty("--progress", `${progress * 100}%`);
+      steps.forEach((step) => step.classList.toggle("is-active", step.getBoundingClientRect().top + 40 < line));
+    }
 
     ticking = false;
   }
@@ -238,17 +325,21 @@
   document.querySelectorAll("img").forEach((img) => {
     const hide = () => { img.style.visibility = "hidden"; };
     if (img.complete && img.naturalWidth === 0) hide();
-    else img.addEventListener("error", hide, { once: true });
+    img.addEventListener("error", hide);
+    img.addEventListener("load", () => { img.style.visibility = ""; });
   });
 
   // ---------- Priority booking form (demo: hook up your own endpoint) ----------
   const subscribeForm = document.getElementById("subscribeForm");
-  subscribeForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    subscribeForm.hidden = true;
-    document.getElementById("subscribeMessage").hidden = false;
-  });
+  if (subscribeForm) {
+    subscribeForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      subscribeForm.hidden = true;
+      document.getElementById("subscribeMessage").hidden = false;
+    });
+  }
 
   // ---------- Footer year ----------
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 })();
