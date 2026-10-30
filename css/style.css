@@ -1513,6 +1513,81 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
 :root[data-theme="light"] .svc-step-num { background: rgba(255, 255, 255, 0.7); box-shadow: 0 8px 18px rgba(242, 106, 27, 0.15); }
 
 /* =========================================================
+   Road trip pages
+   ========================================================= */
+.route-stops {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 48px;
+}
+.route-stop {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s var(--ease), transform 0.4s var(--ease), opacity 0.9s var(--ease);
+}
+.route-stop.is-visible:hover { border-color: rgba(var(--primary-rgb), 0.5); transform: translateX(6px); }
+.route-stop-num {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.route-stop:hover .route-stop-num { background: var(--primary); color: var(--dark); }
+:root[data-theme="light"] .route-stop:hover .route-stop-num { color: #fff; }
+.route-stop h3 { font-size: 19px; margin-bottom: 4px; }
+.route-stop p { font-size: 15px; }
+:root[data-theme="light"] .route-stop {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+.trip-model { position: relative; top: auto; height: min(560px, 70vh); }
+
+/* Road trip cards are links: hover label on the photo */
+.trip-card { display: block; color: inherit; }
+.trip-media { position: relative; }
+.trip-open {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--dark);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+:root[data-theme="light"] .trip-open { color: #fff; }
+.trip-card:hover .trip-open,
+.trip-card:focus-visible .trip-open { opacity: 1; transform: none; }
+.trip-card:hover h3 { color: var(--primary); }
+.trip-card h3 { transition: color 0.3s var(--ease); }
+.trip-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: var(--radius); }
+
+/* =========================================================
    Blog
    ========================================================= */
 .posts {
@@ -2822,6 +2897,7 @@ html.theme-changing *::after {
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
   .about-top { grid-template-columns: 1fr; align-items: start; }
   .svc-overview, .svc-faq { grid-template-columns: 1fr; }
+  .route-stops { grid-template-columns: 1fr; }
   .svc-facts { position: static; }
   .svc-steps { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .svc-steps::before { display: none; }

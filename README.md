@@ -19,6 +19,7 @@ python3 -m http.server 8000
 | `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements, delivery map |
 | `services.html` | Care services gallery and price list |
 | `service-inspection.html`, `service-diagnostics.html`, `service-hu-au.html`, `service-tyres.html`, `service-detailing.html` | One page per care service: overview with quick facts, what's included, step-by-step process, prices, FAQs, related services and booking |
+| `trip-german-alpine-road.html`, `trip-kesselberg-walchensee.html`, `trip-romantic-road.html`, `trip-grossglockner.html`, `trip-lake-garda.html` | One page per road trip (opened from the homepage carousel): overview with distance, time, season and tolls, stop-by-stop route, suggested car with Reserve, driving tips, more trips |
 | `blog.html` | Journal with category, tag and search filters (`?category=care`, `?tag=winter`, `?q=tüv`) |
 | `post-*.html` | Articles with a glass sidebar (search, categories, tags, recent posts), tags and copy-link |
 | `contact.html` | Enquiry form (prefill with `?car=`, `?service=`, `?topic=`), hours, consent-based map |

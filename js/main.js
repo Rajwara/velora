@@ -633,17 +633,27 @@
       dragging = true;
       startX = e.clientX;
       startScroll = tripsTrack.scrollLeft;
-      tripsTrack.setPointerCapture(e.pointerId);
     });
     tripsTrack.addEventListener("pointermove", (e) => {
       if (!dragging) return;
       const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) tripsTrack.classList.add("is-dragging");
-      tripsTrack.scrollLeft = startScroll - dx;
+      // Only take over the pointer once it's clearly a drag, so plain clicks still open the card
+      if (Math.abs(dx) > 4 && !tripsTrack.classList.contains("is-dragging")) {
+        tripsTrack.classList.add("is-dragging");
+        tripsTrack.setPointerCapture(e.pointerId);
+      }
+      if (tripsTrack.classList.contains("is-dragging")) tripsTrack.scrollLeft = startScroll - dx;
     });
+    // A drag shouldn't open the card the pointer was released on
+    let moved = false;
+    tripsTrack.addEventListener("click", (e) => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
     const endDrag = () => {
       if (!dragging) return;
       dragging = false;
+      moved = tripsTrack.classList.contains("is-dragging");
+      setTimeout(() => { moved = false; }, 60);
       tripsTrack.classList.remove("is-dragging");
       // Settle on the nearest card
       tripsTrack.scrollTo({ left: Math.round(tripsTrack.scrollLeft / step()) * step(), behavior: "smooth" });
