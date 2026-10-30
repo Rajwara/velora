@@ -983,6 +983,76 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
 .w5 .work-media { aspect-ratio: 815 / 544; }
 
 /* =========================================================
+   Homepage structure: about intro, stats band, chapters
+   ========================================================= */
+.about-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+.about-main .eyebrow { margin-bottom: 20px; }
+.about-side { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.about-side p { font-size: 16px; }
+.about-side .btn { min-width: 260px; margin-top: 16px; justify-content: space-between; padding-left: 26px; }
+.stats--band { margin: clamp(48px, 6vw, 80px) 0 0; }
+
+.why-grid--4 .why-intro.section-head { margin-bottom: 20px; padding-right: 0; }
+
+.ba-slider { aspect-ratio: 16 / 7; }
+.ba-nav { z-index: 2; background: rgba(var(--bg-rgb), 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* Chapter dividers: big outlined number, title, short intro */
+.chapter { padding: clamp(56px, 6vw, 88px) 0 0; }
+.chapter-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr minmax(0, 420px);
+  align-items: end;
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(28px, 3vw, 40px) var(--edge) 0;
+}
+.chapter-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--edge);
+  right: var(--edge);
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), rgba(var(--fg-rgb), 0.14) 30%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s var(--ease);
+}
+.chapter.is-visible .chapter-inner::before { transform: scaleX(1); }
+.chapter-num {
+  font-family: var(--font-heading);
+  font-size: clamp(80px, 11vw, 168px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease) 0.2s, transform 1.2s var(--ease) 0.2s;
+}
+.chapter-body .eyebrow { margin-bottom: 14px; }
+.chapter-title {
+  font-size: clamp(30px, 3.6vw, 54px);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s var(--ease) 0.35s, transform 1s var(--ease) 0.35s;
+}
+.chapter-body .eyebrow,
+.chapter-text { opacity: 0; transition: opacity 1s var(--ease) 0.5s; }
+.chapter-text { font-size: 16px; padding-bottom: 6px; }
+.chapter.is-visible :is(.chapter-num, .chapter-title, .chapter-body .eyebrow, .chapter-text) { opacity: 1; transform: none; }
+.chapter + .section { padding-top: clamp(48px, 5vw, 72px); }
+:root[data-theme="light"] .chapter-num { -webkit-text-stroke-color: rgba(242, 106, 27, 0.7); }
+
+/* =========================================================
    Featured models (sticky stacked cards)
    ========================================================= */
 .model-stack { display: flex; flex-direction: column; gap: 32px; }
