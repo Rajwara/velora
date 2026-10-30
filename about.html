@@ -230,29 +230,76 @@
           <p class="muted section-head-note reveal reveal-right">Technicians, detailers and rental specialists, all under one roof in Schwabing.</p>
         </div>
         <div class="team-grid">
-          <article class="team-card reveal-once">
-            <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Markus Brandt" loading="lazy"></div>
-            <h3>Markus Brandt</h3>
-            <p class="muted">Founder & Managing Director</p>
-          </article>
-          <article class="team-card reveal-once">
-            <div class="team-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="Portrait of Katrin Vogel" loading="lazy"></div>
-            <h3>Katrin Vogel</h3>
-            <p class="muted">Head of Rental</p>
-          </article>
-          <article class="team-card reveal-once">
-            <div class="team-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Stefan Lehmann" loading="lazy"></div>
-            <h3>Stefan Lehmann</h3>
-            <p class="muted">Master Technician (Kfz-Meister)</p>
-          </article>
-          <article class="team-card reveal-once">
-            <div class="team-photo"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Portrait of Julia Sommer" loading="lazy"></div>
-            <h3>Julia Sommer</h3>
-            <p class="muted">Detailing Studio Lead</p>
-          </article>
+          <button type="button" class="team-card reveal-once" data-member="markus-brandt" aria-haspopup="dialog" aria-controls="teamPanel" style="--i: 0">
+            <span class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Markus Brandt" loading="lazy"></span>
+            <span class="team-shade" aria-hidden="true"></span>
+            <span class="team-years">22 yrs exp.</span>
+            <span class="team-info">
+              <span class="team-role">Founder &amp; Managing Director</span>
+              <span class="team-name">Markus Brandt</span>
+              <span class="team-tags"><span>Porsche</span><span>Business &amp; fleet clients</span></span>
+              <span class="team-more">View profile <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+            </span>
+          </button>
+          <button type="button" class="team-card reveal-once" data-member="katrin-vogel" aria-haspopup="dialog" aria-controls="teamPanel" style="--i: 1">
+            <span class="team-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="Portrait of Katrin Vogel" loading="lazy"></span>
+            <span class="team-shade" aria-hidden="true"></span>
+            <span class="team-years">11 yrs exp.</span>
+            <span class="team-info">
+              <span class="team-role">Head of Rental</span>
+              <span class="team-name">Katrin Vogel</span>
+              <span class="team-tags"><span>Rentals &amp; handovers</span><span>Road-trip planning</span></span>
+              <span class="team-more">View profile <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+            </span>
+          </button>
+          <button type="button" class="team-card reveal-once" data-member="stefan-lehmann" aria-haspopup="dialog" aria-controls="teamPanel" style="--i: 2">
+            <span class="team-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="Portrait of Stefan Lehmann" loading="lazy"></span>
+            <span class="team-shade" aria-hidden="true"></span>
+            <span class="team-years">18 yrs exp.</span>
+            <span class="team-info">
+              <span class="team-role">Master Technician (Kfz-Meister)</span>
+              <span class="team-name">Stefan Lehmann</span>
+              <span class="team-tags"><span>Diagnostics</span><span>BMW &amp; Mercedes-Benz</span></span>
+              <span class="team-more">View profile <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+            </span>
+          </button>
+          <button type="button" class="team-card reveal-once" data-member="julia-sommer" aria-haspopup="dialog" aria-controls="teamPanel" style="--i: 3">
+            <span class="team-photo"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Portrait of Julia Sommer" loading="lazy"></span>
+            <span class="team-shade" aria-hidden="true"></span>
+            <span class="team-years">9 yrs exp.</span>
+            <span class="team-info">
+              <span class="team-role">Detailing Studio Lead</span>
+              <span class="team-name">Julia Sommer</span>
+              <span class="team-tags"><span>Paint correction</span><span>Ceramic coating</span></span>
+              <span class="team-more">View profile <svg class="icon-sm"><use href="#i-arrow-up"/></svg></span>
+            </span>
+          </button>
         </div>
       </div>
     </section>
+
+    <!-- Team member side panel -->
+    <div class="team-backdrop" id="teamBackdrop"></div>
+    <aside class="team-panel" id="teamPanel" role="dialog" aria-modal="true" aria-labelledby="tpName" aria-hidden="true" inert>
+      <button type="button" class="drawer-close" id="teamClose" aria-label="Close profile"><svg class="icon"><use href="#i-close"/></svg></button>
+      <div class="tp-photo"><img id="tpPhoto" src="" alt=""></div>
+      <div class="tp-body">
+        <p class="tp-role" id="tpRole"></p>
+        <h2 class="tp-name" id="tpName"></h2>
+        <blockquote class="tp-quote" id="tpQuote"></blockquote>
+        <p class="muted tp-bio" id="tpBio"></p>
+        <dl class="tp-facts">
+          <div><dt>Experience</dt><dd id="tpYears"></dd></div>
+          <div><dt>At Velora since</dt><dd id="tpSince"></dd></div>
+          <div><dt>Languages</dt><dd id="tpLangs"></dd></div>
+        </dl>
+        <p class="filter-label">Specialties</p>
+        <div class="tp-skills" id="tpSkills"></div>
+        <a href="contact.html" class="btn btn-primary tp-book" id="tpBook" data-magnetic>Book Appointment <span class="btn-icon"><svg class="icon-sm"><use href="#i-calendar"/></svg></span></a>
+        <a href="tel:+498912345678" class="svc-call"><svg class="icon-sm"><use href="#i-phone"/></svg> Or call +49 89 1234 5678</a>
+      </div>
+    </aside>
+    <script type="application/json" id="teamData">{"markus-brandt": {"slug": "markus-brandt", "name": "Markus Brandt", "role": "Founder &amp; Managing Director", "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80", "topic": "other", "years": 22, "since": 2014, "bio": "Kfz-Meister and lifelong Porsche enthusiast. Markus founded Velora in 2014 after fifteen years in dealer workshops, with one idea: rent the cars you know how to look after.", "skills": ["Porsche", "Business &amp; fleet clients", "Workshop planning"], "langs": "German, English", "quote": "Every car that leaves us should be one I'd happily drive myself."}, "katrin-vogel": {"slug": "katrin-vogel", "name": "Katrin Vogel", "role": "Head of Rental", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80", "topic": "rental", "years": 11, "since": 2020, "bio": "Katrin runs the rental fleet and every handover. She plans road trips, cross-border requests and airport deliveries, and makes sure first-time Autobahn drivers feel at home.", "skills": ["Rentals &amp; handovers", "Road-trip planning", "Airport delivery"], "langs": "German, English, Italian", "quote": "The best rental is the one where you only think about the road."}, "stefan-lehmann": {"slug": "stefan-lehmann", "name": "Stefan Lehmann", "role": "Master Technician (Kfz-Meister)", "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80", "topic": "service", "years": 18, "since": 2015, "bio": "Stefan leads the workshop: servicing, diagnostics and HU/AU preparation for BMW, Mercedes-Benz and VW Group cars. Known for finding the faults others miss.", "skills": ["Diagnostics", "BMW &amp; Mercedes-Benz", "HU/AU preparation"], "langs": "German, English", "quote": "A fault code is where the diagnosis starts, not where it ends."}, "julia-sommer": {"slug": "julia-sommer", "name": "Julia Sommer", "role": "Detailing Studio Lead", "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80", "topic": "service", "years": 9, "since": 2017, "bio": "Julia heads the detailing studio: paint correction, ceramic coating and leather care. She has restored everything from daily drivers to classic 911s.", "skills": ["Paint correction", "Ceramic coating", "Leather &amp; Alcantara"], "langs": "German, English, French", "quote": "Good detailing is patience you can see."}}</script>
   </main>
 
   <!-- ================= FOOTER ================= -->

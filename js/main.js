@@ -804,6 +804,10 @@
 
     // Prefill from links such as contact.html?car=bmw-m5 or ?service=tyres
     let topic = params.get("topic");
+    if (params.get("with")) {
+      const who = params.get("with").split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+      if (!contactForm.message.value) contactForm.message.value = `I'd like to book an appointment with ${who}.`;
+    }
     if (params.get("car")) { topic = "rental"; contactForm.car.value = params.get("car"); }
     if (params.get("service")) { topic = "service"; contactForm.service.value = params.get("service"); }
     if (topic && contactForm.querySelector(`input[name="topic"][value="${topic}"]`)) {
@@ -954,6 +958,58 @@
       step.classList.toggle("is-touched", on);
     });
   });
+
+  // ---------- Team cards: tilt on hover, side panel with profile ----------
+  const teamData = document.getElementById("teamData");
+  if (teamData) {
+    const team = JSON.parse(teamData.textContent);
+    const panel = document.getElementById("teamPanel");
+    const $ = (id) => document.getElementById(id);
+    let lastCard = null;
+
+    const openMember = (slug, card) => {
+      const m = team[slug];
+      if (!m) return;
+      $("tpPhoto").src = m.photo;
+      $("tpPhoto").alt = `Portrait of ${m.name.replace(/&amp;/g, "&")}`;
+      $("tpRole").innerHTML = m.role;
+      $("tpName").innerHTML = m.name;
+      $("tpQuote").textContent = `“${m.quote}”`;
+      $("tpBio").textContent = m.bio;
+      $("tpYears").textContent = `${m.years} years`;
+      $("tpSince").textContent = m.since;
+      $("tpLangs").textContent = m.langs;
+      $("tpSkills").innerHTML = m.skills.map((s) => `<span>${s}</span>`).join("");
+      $("tpBook").href = `contact.html?topic=${m.topic}&with=${encodeURIComponent(slug)}#enquiry`;
+      panel.scrollTop = 0;
+      lastCard = card;
+      panel.inert = false;
+      panel.setAttribute("aria-hidden", "false");
+      body.classList.add("team-open", "no-scroll");
+      setTimeout(() => $("teamClose").focus(), 300);
+    };
+    const closeMember = () => {
+      if (!body.classList.contains("team-open")) return;
+      body.classList.remove("team-open", "no-scroll");
+      panel.inert = true;
+      panel.setAttribute("aria-hidden", "true");
+      if (lastCard) lastCard.focus();
+    };
+
+    document.querySelectorAll(".team-card").forEach((card) => {
+      card.addEventListener("click", () => openMember(card.dataset.member, card));
+      if (reduceMotion) return;
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 10}deg`);
+        card.style.setProperty("--rx", `${((e.clientY - r.top) / r.height - 0.5) * -10}deg`);
+      });
+      card.addEventListener("pointerleave", () => { card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
+    });
+    $("teamClose").addEventListener("click", closeMember);
+    $("teamBackdrop").addEventListener("click", closeMember);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMember(); });
+  }
 
   // ---------- Light / dark theme switch ----------
   const themeSwitch = document.getElementById("themeSwitch");
