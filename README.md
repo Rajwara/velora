@@ -16,7 +16,8 @@ python3 -m http.server 8000
 |---|---|
 | `index.html` | Home: intro (about, why Velora), then three chapters: 01 Rent (how renting works, road trips, delivery), 02 Care (services, how care works, before/after), 03 Choose (plans, testimonials, journal, call to action) |
 | `about.html` | About: story, values, milestones, team |
-| `fleet.html` | Fleet with marque filter and search (`?marque=bmw`, `?q=m4`), rental requirements, delivery map |
+| `fleet.html` | Rental catalogue of 19 popular German cars with filters for brand, category, max daily price, fuel and seats, plus search and sorting. Filters are kept in the URL (`?marque=porsche,bmw&category=suv&fuel=electric&seats=5&max=500&q=gti&sort=price-asc`). Also rental requirements and delivery |
+| `rent.html` | Short address that forwards to the fleet catalogue (keeps any filters) |
 | `services.html` | Care services gallery and price list |
 | `service-inspection.html`, `service-diagnostics.html`, `service-hu-au.html`, `service-tyres.html`, `service-detailing.html` | One page per care service: overview with quick facts, what's included, step-by-step process, prices, FAQs, related services and booking |
 | `trip-german-alpine-road.html`, `trip-kesselberg-walchensee.html`, `trip-romantic-road.html`, `trip-grossglockner.html`, `trip-lake-garda.html` | One page per road trip (opened from the homepage carousel): overview with distance, time, season and tolls, stop-by-stop route, suggested car with Reserve, driving tips, more trips |

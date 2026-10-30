@@ -412,42 +412,170 @@
     return select;
   }
 
-  // ---------- Fleet filter + search ----------
-  const fleetStack = document.getElementById("fleetStack");
-  if (fleetStack) {
-    const fleetCards = Array.from(fleetStack.querySelectorAll(".model-card"));
+  // ---------- Fleet catalogue: brand, category, price, fuel, seats, search, sort ----------
+  const carGrid = document.getElementById("carGrid");
+  if (carGrid) {
+    const cars = Array.from(carGrid.querySelectorAll(".car-card"));
+    const featuredOrder = cars.slice();
+    const panel = document.getElementById("fleetFilters");
     const search = document.getElementById("fleetSearch");
+    const price = document.getElementById("priceMax");
+    const priceOut = document.getElementById("priceOut");
+    const sortSel = document.getElementById("fleetSort");
+    const countEl = document.getElementById("fleetCount");
+    const countLabel = document.getElementById("fleetCountLabel");
+    const applyCount = document.getElementById("applyCount");
     const empty = document.getElementById("fleetEmpty");
-    const params = new URLSearchParams(location.search);
-    let marque = "all";
+    const chipsEl = document.getElementById("activeFilters");
+    const priceMaxDefault = Number(price.max);
+    const labelOf = (input) => input.nextElementSibling.firstChild.textContent.trim();
+    const checked = (name) => Array.from(panel.querySelectorAll(`input[name="${name}"]:checked`)).map((i) => i.value);
 
-    const apply = () => {
-      const q = search.value.trim().toLowerCase();
-      let count = 0;
-      fleetCards.forEach((card) => {
-        const match = (marque === "all" || card.dataset.marque === marque)
-          && (!q || card.dataset.search.toLowerCase().includes(q));
-        const wasHidden = card.hidden;
-        card.hidden = !match;
-        if (match) {
-          count++;
-          card.classList.add("is-visible");
-          if (wasHidden) {
-            card.classList.remove("is-filtered-in");
-            void card.offsetWidth; // restart the animation
-            card.classList.add("is-filtered-in");
-          }
-        }
-      });
-      empty.hidden = count > 0;
-      onScroll();
+    const state = () => ({
+      q: search.value.trim().toLowerCase(),
+      brand: checked("brand"),
+      category: checked("category"),
+      fuel: checked("fuel"),
+      seats: Number(checked("seats")[0] || 0),
+      max: Number(price.value),
+      sort: sortSel.value,
+    });
+
+    const matches = (card, s) =>
+      (!s.brand.length || s.brand.includes(card.dataset.brand))
+      && (!s.category.length || s.category.includes(card.dataset.category))
+      && (!s.fuel.length || s.fuel.includes(card.dataset.fuel))
+      && Number(card.dataset.seats) >= s.seats
+      && Number(card.dataset.price) <= s.max
+      && (!s.q || card.dataset.search.toLowerCase().includes(s.q));
+
+    const sorters = {
+      "price-asc": (x, y) => x.dataset.price - y.dataset.price,
+      "price-desc": (x, y) => y.dataset.price - x.dataset.price,
+      "power-desc": (x, y) => y.dataset.power - x.dataset.power,
+      name: (x, y) => x.dataset.name.localeCompare(y.dataset.name),
     };
 
-    const selectMarque = setupChips(document.querySelector(".page-fleet .chips"), (value) => { marque = value; apply(); });
-    search.addEventListener("input", apply);
+    let lastCount = cars.length;
+    const animateCount = (to) => {
+      const from = lastCount;
+      lastCount = to;
+      if (reduceMotion || from === to) { countEl.textContent = to; return; }
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / 400, 1);
+        countEl.textContent = Math.round(from + (to - from) * t);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
 
+    function renderChips(s) {
+      const chips = [];
+      ["brand", "category", "fuel"].forEach((name) => {
+        panel.querySelectorAll(`input[name="${name}"]:checked`).forEach((input) => chips.push({ label: labelOf(input), clear: () => { input.checked = false; } }));
+      });
+      if (s.seats) chips.push({ label: `${s.seats}+ seats`, clear: () => { panel.querySelector('input[name="seats"][value="0"]').checked = true; } });
+      if (s.max < priceMaxDefault) chips.push({ label: `Up to €${s.max}/day`, clear: () => { price.value = priceMaxDefault; } });
+      if (s.q) chips.push({ label: `"${search.value.trim()}"`, clear: () => { search.value = ""; } });
+      chipsEl.innerHTML = "";
+      chips.forEach((chip) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "active-chip";
+        b.setAttribute("aria-label", `Remove filter ${chip.label}`);
+        b.innerHTML = `${chip.label.replace(/</g, "&lt;")} <svg><use href="#i-close"/></svg>`;
+        b.addEventListener("click", () => { chip.clear(); apply(); });
+        chipsEl.appendChild(b);
+      });
+    }
+
+    function syncUrl(s) {
+      const p = new URLSearchParams();
+      if (s.brand.length) p.set("marque", s.brand.join(","));
+      if (s.category.length) p.set("category", s.category.join(","));
+      if (s.fuel.length) p.set("fuel", s.fuel.join(","));
+      if (s.seats) p.set("seats", s.seats);
+      if (s.max < priceMaxDefault) p.set("max", s.max);
+      if (s.q) p.set("q", search.value.trim());
+      if (s.sort !== "featured") p.set("sort", s.sort);
+      history.replaceState(null, "", `${location.pathname}${p.toString() ? `?${p}` : ""}${location.hash}`);
+    }
+
+    function apply() {
+      const s = state();
+      priceOut.textContent = `€${s.max}`;
+      price.style.setProperty("--fill", `${((s.max - price.min) / (price.max - price.min)) * 100}%`);
+
+      // Sort, then show/hide with a staggered entrance
+      const ordered = s.sort === "featured" ? featuredOrder : cars.slice().sort(sorters[s.sort]);
+      ordered.forEach((card) => carGrid.appendChild(card));
+      let n = 0;
+      ordered.forEach((card) => {
+        const show = matches(card, s);
+        card.hidden = !show;
+        if (show) {
+          card.style.setProperty("--i", Math.min(n, 8));
+          card.classList.remove("is-filtered-in");
+          void card.offsetWidth;
+          card.classList.add("is-filtered-in");
+          n++;
+        }
+      });
+
+      animateCount(n);
+      countLabel.textContent = n === 1 ? "car available" : "cars available";
+      applyCount.textContent = n;
+      document.getElementById("applyNoun").textContent = n === 1 ? "car" : "cars";
+      empty.hidden = n > 0;
+      renderChips(s);
+      syncUrl(s);
+    }
+
+    function reset() {
+      panel.querySelectorAll('input[type="checkbox"]').forEach((i) => { i.checked = false; });
+      panel.querySelector('input[name="seats"][value="0"]').checked = true;
+      price.value = priceMaxDefault;
+      search.value = "";
+      sortSel.value = "featured";
+      apply();
+    }
+
+    panel.addEventListener("change", apply);
+    price.addEventListener("input", apply);
+    search.addEventListener("input", apply);
+    sortSel.addEventListener("change", apply);
+    document.getElementById("filtersReset").addEventListener("click", reset);
+    document.getElementById("emptyReset").addEventListener("click", reset);
+
+    // Mobile: filters slide up as a bottom sheet
+    const openBtn = document.getElementById("filtersOpen");
+    const setSheet = (open) => {
+      body.classList.toggle("filters-open", open);
+      body.classList.toggle("no-scroll", open);
+      openBtn.setAttribute("aria-expanded", String(open));
+    };
+    openBtn.addEventListener("click", () => setSheet(true));
+    document.getElementById("filtersClose").addEventListener("click", () => setSheet(false));
+    document.getElementById("filtersApply").addEventListener("click", () => setSheet(false));
+    document.getElementById("filtersBackdrop").addEventListener("click", () => setSheet(false));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setSheet(false); });
+
+    // Initial state from the URL, e.g. fleet.html?marque=porsche&category=suv&max=500
+    const params = new URLSearchParams(location.search);
+    const tick = (name, values) => (values || "").split(",").filter(Boolean).forEach((v) => {
+      const input = panel.querySelector(`input[name="${name}"][value="${CSS.escape(v)}"]`);
+      if (input) input.checked = true;
+    });
+    tick("brand", params.get("marque"));
+    tick("category", params.get("category"));
+    tick("fuel", params.get("fuel"));
+    if (params.get("seats")) { const r = panel.querySelector(`input[name="seats"][value="${CSS.escape(params.get("seats"))}"]`); if (r) r.checked = true; }
+    if (params.get("max")) price.value = params.get("max");
     if (params.get("q")) search.value = params.get("q");
-    selectMarque(params.get("marque") || "all");
+    if (params.get("sort") && sorters[params.get("sort")]) sortSel.value = params.get("sort");
+    apply();
+    if (params.toString() && !location.hash) requestAnimationFrame(() => document.getElementById("models").scrollIntoView());
   }
 
   // ---------- Journal: category, tag and search filters ----------
