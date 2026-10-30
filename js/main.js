@@ -183,12 +183,10 @@
   // ---------- Before & after slider ----------
   const baSlider = document.getElementById("baSlider");
   if (baSlider) {
-    // Replace with your own before/after photo pairs
+    // Before/after photo pairs (images/home)
     const PAIRS = [
-      { before: "https://images.pexels.com/photos/6872162/pexels-photo-6872162.jpeg?auto=compress&w=1600",
-        after: "https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&w=1600" },
-      { before: "https://images.pexels.com/photos/6873088/pexels-photo-6873088.jpeg?auto=compress&w=1600",
-        after: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&w=1600" },
+      { before: "images/home/before-1.webp", after: "images/home/after-1.webp", label: "Mercedes-Benz exterior" },
+      { before: "images/home/before-2.webp", after: "images/home/after-2.webp", label: "Mercedes-Benz interior" },
     ];
     const beforeImg = baSlider.querySelector(".ba-before");
     const afterImg = baSlider.querySelector(".ba-after");
@@ -240,6 +238,8 @@
       setTimeout(() => {
         beforeImg.src = PAIRS[pair].before;
         afterImg.src = PAIRS[pair].after;
+        beforeImg.alt = `${PAIRS[pair].label} before detailing`;
+        afterImg.alt = `${PAIRS[pair].label} after detailing`;
         setPos(50);
         baSlider.classList.remove("is-fading");
       }, reduceMotion ? 0 : 300);

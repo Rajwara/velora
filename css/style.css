@@ -740,7 +740,7 @@ body.nav-open .drawer-links li:nth-child(6) a { transition-delay: 0.4s; }
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url("https://images.pexels.com/photos/2526128/pexels-photo-2526128.jpeg?auto=compress&w=1400") center / cover no-repeat;
+  background: url("../images/home/care-panel.webp") center / cover no-repeat;
   filter: grayscale(1) brightness(0.7);
   transform: scale(1.1);
   transition: transform 2s var(--ease);

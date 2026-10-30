@@ -1,16 +1,16 @@
 # Homepage images
 
-Upload the homepage photos into this folder. Using these names lets them be wired into `index.html` directly (JPG or WebP, ideally under 500 KB each).
+Photos used on the homepage. File names are web-safe (no spaces or `&`); large files were recompressed to WebP at the same dimensions.
 
-| File name | Where it appears | Suggested size |
-|---|---|---|
-| `hero.jpg` | Main banner at the top | 2400 × 1400 |
-| `rent-step-1.jpg` … `rent-step-4.jpg` | Photos that follow the cursor on the four "How Renting Works" cards | 1200 × 900 |
-| `trip-alpine-road.jpg`, `trip-kesselberg.jpg`, `trip-romantic-road.jpg`, `trip-grossglockner.jpg`, `trip-lake-garda.jpg` | Road Trips carousel | 1200 × 900 |
-| `service-inspection.jpg`, `service-diagnostics.jpg`, `service-hu-au.jpg`, `service-tyres.jpg`, `service-detailing.jpg` | Care Services tabs | 1200 × 800 |
-| `care-step-1.jpg` … `care-step-3.jpg` | "How Care Works" step cards | 1200 × 860 |
-| `care-panel.jpg` | Large photo panel beside "How Care Works" | 1400 × 1600 |
-| `before-1.jpg`, `after-1.jpg`, `before-2.jpg`, `after-2.jpg` | Before & After slider (each pair must be the same framing) | 1800 × 1050 |
-| `review-1.jpg` … | Testimonial portraits (square) | 240 × 240 |
+| File | Where it appears |
+|---|---|
+| `hero.webp` | Main banner |
+| `service-inspection.webp`, `service-diagnostics.webp`, `service-hu-au.webp`, `service-tyres.webp`, `service-detailing.webp` | Care Services tabs |
+| `care-panel.webp` | Large photo panel beside "How Care Works" |
+| `care-step-1.webp`, `care-step-2.webp` | "How Care Works" steps 01 and 02 |
+| `before-1.webp` / `after-1.webp`, `before-2.webp` / `after-2.webp` | Before & After slider (exterior, interior) |
+| `post-autobahn-guide.webp`, `post-winter-tyres.webp`, `post-hu-au-explained.webp` | Journal cards (also used on the blog and article pages) |
 
-Only use photos you own or have a licence for, and make sure people in portraits have agreed to appear on the site.
+Still using placeholder photos (upload and they can be swapped in): "How Care Works" step 03 (Drive Away), the four "How Renting Works" cursor photos, the five Road Trips, and the testimonial portraits.
+
+Only use photos you own or have a licence for.
